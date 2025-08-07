@@ -1,0 +1,9 @@
+# Set s_start
+# This component is translated by DyadAI
+component Set_s_start
+  s_start = RealInput()
+  flange = Flange()
+relations
+  initial flange.s = s_start
+  flange.f = 0
+end

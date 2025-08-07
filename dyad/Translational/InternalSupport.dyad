@@ -1,0 +1,14 @@
+# Adapter model to utilize conditional support connector
+# This component is translated by DyadAI
+component InternalSupport
+  # External support force (must be computed via force balance in model where InternalSupport is used; = flange.f)
+  f = ForceInput()
+  flange = Flange()
+  # External support position (= flange.s)
+  variable s::Dyad.Position
+relations
+  flange.f = f
+  flange.s = s
+end
+
+connector ForceInput = input Dyad.Force

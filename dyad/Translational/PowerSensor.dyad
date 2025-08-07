@@ -1,0 +1,9 @@
+# Ideal sensor to measure the power between two flanges
+# This component is translated by DyadAI
+component PowerSensor
+  extends Translational.PartialRelativeSensor
+  power = RealOutput()
+relations
+  flange_a.s = flange_b.s
+  power = flange_a.f*der(flange_a.s)
+end
