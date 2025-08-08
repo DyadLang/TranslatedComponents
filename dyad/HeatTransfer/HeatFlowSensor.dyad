@@ -1,0 +1,11 @@
+# Heat flow rate sensor
+# This component is translated by DyadAI
+component HeatFlowSensor
+  Q_flow = RealOutput()
+  port_a = HeatPort()
+  port_b = HeatPort()
+relations
+  port_a.T = port_b.T
+  port_a.Q_flow+port_b.Q_flow = 0
+  Q_flow = port_a.Q_flow
+end

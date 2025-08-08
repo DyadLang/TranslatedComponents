@@ -1,0 +1,16 @@
+# Lumped thermal element for heat convection (Q_flow = Gc*dT)
+# This component is translated by DyadAI
+component Convection
+  Gc = RealInput()
+  solid = HeatPort()
+  fluid = HeatPort()
+  # Heat flow rate from solid -> fluid
+  variable Q_flow::Dyad.HeatFlowRate
+  # = solid.T - fluid.T
+  variable dT::Dyad.TemperatureDifference
+relations
+  dT = solid.T-fluid.T
+  solid.Q_flow = Q_flow
+  fluid.Q_flow = -Q_flow
+  Q_flow = Gc*dT
+end

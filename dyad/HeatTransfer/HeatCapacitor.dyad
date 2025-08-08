@@ -1,0 +1,15 @@
+# Lumped thermal element storing heat
+# This component is translated by DyadAI
+component HeatCapacitor
+  port = HeatPort()
+  # Heat capacity of element (= cp*m)
+  parameter C::Dyad.HeatCapacity
+  # Temperature of element
+  variable T::Dyad.Temperature
+  # Time derivative of temperature (= der(T))
+  variable der_T::Dyad.TemperatureSlope
+relations
+  T = port.T
+  der_T = der(T)
+  C*der(T) = port.Q_flow
+end

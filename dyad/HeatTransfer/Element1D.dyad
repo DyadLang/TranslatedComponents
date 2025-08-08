@@ -1,0 +1,12 @@
+partial component Element1D
+  port_a = HeatPort()
+  port_b = HeatPort()
+  # Heat flow rate from port_a -> port_b
+  variable Q_flow::Dyad.HeatFlowRate
+  # port_a.T - port_b.T
+  variable dT::Dyad.TemperatureDifference
+relations
+  dT = port_a.T - port_b.T
+  port_a.Q_flow = Q_flow
+  port_b.Q_flow = -Q_flow
+end

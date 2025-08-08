@@ -1,0 +1,8 @@
+# Conversion from Kelvin to degree Rankine
+# This component is translated by DyadAI
+component FromKelvin
+  Kelvin = RealInput()
+  Rankine = RealOutput()
+relations
+  Rankine = HeatTransfer.to_degRk(Kelvin)
+end

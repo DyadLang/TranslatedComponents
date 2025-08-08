@@ -1,0 +1,9 @@
+# Lumped thermal element for radiation heat transfer
+# This component is translated by DyadAI
+component BodyRadiation
+  extends HeatTransfer.Element1D
+  # Net radiation conductance between two surfaces (see docu)
+  parameter Gr::Real(units=m2)
+relations
+  Q_flow = Gr*5.670374419e-8*(port_a.T^4-port_b.T^4)
+end

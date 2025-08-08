@@ -1,0 +1,9 @@
+# Fixed temperature boundary condition in Kelvin
+# This component is translated by DyadAI
+component FixedTemperature
+  port = HeatPort()
+  # Fixed temperature at port
+  parameter T::Dyad.Temperature
+relations
+  port.T = T
+end

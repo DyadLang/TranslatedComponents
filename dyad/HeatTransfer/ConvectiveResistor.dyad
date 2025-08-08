@@ -1,0 +1,16 @@
+# Lumped thermal element for heat convection (dT = Rc*Q_flow)
+# This component is translated by DyadAI
+component ConvectiveResistor
+  Rc = RealInput()
+  solid = HeatPort()
+  fluid = HeatPort()
+  # Heat flow rate from solid -> fluid
+  variable Q_flow::Dyad.HeatFlowRate
+  # = solid.T - fluid.T
+  variable dT::Dyad.TemperatureDifference
+relations
+  dT = solid.T-fluid.T
+  solid.Q_flow = Q_flow
+  fluid.Q_flow = -Q_flow
+  dT = Rc*Q_flow
+end
