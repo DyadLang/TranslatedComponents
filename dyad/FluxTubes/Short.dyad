@@ -1,0 +1,7 @@
+# Short cut branch
+# This component is translated by DyadAI
+component Short
+  extends FluxTubes.TwoPortElementary
+relations
+  connect(port_p, port_n)
+end

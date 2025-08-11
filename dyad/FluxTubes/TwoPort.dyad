@@ -1,0 +1,5 @@
+partial component TwoPort
+  extends FluxTubes.TwoPortExtended
+relations
+  0 = port_p.Phi+port_n.Phi
+end

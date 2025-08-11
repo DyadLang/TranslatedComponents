@@ -1,0 +1,10 @@
+partial component Leakage
+  extends FluxTubes.TwoPort
+  # Magnetic reluctance
+  variable R_m::Dyad.Reluctance
+  # Magnetic permeance
+  variable G_m::Dyad.Permeance
+relations
+  V_m = Phi*R_m
+  R_m = 1/G_m
+end

@@ -1,0 +1,1 @@
+type X6Cr17 = FluxTubes.SoftMagneticBaseData(label="X6Cr17", mu_i=274, B_myMax=1.1, c_a=970, c_b=1.2, n=8.3)

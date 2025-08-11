@@ -1,0 +1,1 @@
+type HardFerrite = FluxTubes.HardMagneticBaseData(H_cBRef=170000, B_rRef=0.38, T_ref=20+273.15, alpha_Br=-0.002)

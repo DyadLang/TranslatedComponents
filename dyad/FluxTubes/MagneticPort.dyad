@@ -1,0 +1,4 @@
+connector MagneticPort
+  potential V_m::Dyad.MagneticPotential
+  flow Phi::Dyad.MagneticFlux
+end

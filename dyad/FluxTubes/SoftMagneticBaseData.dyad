@@ -1,0 +1,8 @@
+struct SoftMagneticBaseData
+  label::String = "SoftMagnetic"
+  mu_i::Dyad.RelativePermeability = 1
+  B_myMax::Dyad.MagneticFluxDensity = 1
+  c_a::Real = 1
+  c_b::Real = 1
+  n::Real = 1
+end

@@ -9,7 +9,6 @@
 
 ## Connectors
 
- * `flange` - This connector represents a rotational spline with angle and torque as the potential and flow variables, respectively. ([`Spline`](@ref))
  * `a` - This connector represents a real signal as an output from a component ([`RealOutput`](@ref))
 
 ## Variables
@@ -33,7 +32,6 @@
 
   ### Components
   __systems = System[]
-  push!(__systems, @named flange = __Dyad__Spline())
 
   ### Guesses
   __guesses = Dict()
@@ -46,8 +44,6 @@
 
   ### Equations
   __eqs = Equation[]
-  push!(__eqs, 0 ~ flange.tau)
-  push!(__eqs, w ~ D(flange.phi))
   push!(__eqs, a ~ D(w))
 
   # Return completely constructed System

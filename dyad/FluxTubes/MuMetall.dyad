@@ -1,0 +1,1 @@
+type MuMetall = FluxTubes.SoftMagneticBaseData(label="Mu-metal", mu_i=27300, B_myMax=0.46, c_a=1037500, c_b=3.67, n=10)

@@ -1,0 +1,11 @@
+# Crossing of two branches
+# This component is translated by DyadAI
+component Crossing
+  port_p1 = FluxTubes.MagneticPort()
+  port_p2 = FluxTubes.MagneticPort()
+  port_n1 = FluxTubes.MagneticPort()
+  port_n2 = FluxTubes.MagneticPort()
+relations
+  connect(port_p1, port_p2)
+  connect(port_n1, port_n2)
+end

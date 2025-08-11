@@ -1,0 +1,13 @@
+# Constant magnetomotive force
+# This component is translated by DyadAI
+component ConstantMagneticPotentialDifference
+  extends FluxTubes.TwoPortElementary
+  # Magnetic potential difference
+  parameter V_m::Dyad.MagneticPotentialDifference
+  # Magnetic flux from port_p to port_n
+  variable Phi::Dyad.MagneticFlux
+relations
+  V_m = port_p.V_m-port_n.V_m
+  Phi = port_p.Phi
+  0 = port_p.Phi+port_n.Phi
+end

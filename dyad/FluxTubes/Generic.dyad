@@ -1,0 +1,9 @@
+partial component Generic
+  extends FluxTubes.TwoPort
+  # Length in direction of flux
+  parameter l::Dyad.Length = 0.1
+  # Area of cross section
+  parameter A::Dyad.Area = 0.0001
+  # Volume of FluxTube
+  parameter V::Dyad.Volume = A*l
+end

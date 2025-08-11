@@ -1,0 +1,9 @@
+# Constant reluctance
+# This component is translated by DyadAI
+component ConstantReluctance
+  extends FluxTubes.TwoPort
+  # Magnetic reluctance
+  parameter R_m::Dyad.Reluctance = 1
+relations
+  V_m = Phi*R_m
+end

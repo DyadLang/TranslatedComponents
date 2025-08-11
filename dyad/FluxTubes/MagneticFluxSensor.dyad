@@ -1,0 +1,10 @@
+# Sensor to measure magnetic flux
+# This component is translated by DyadAI
+component MagneticFluxSensor
+  extends FluxTubes.TwoPortElementary
+  Phi = RealOutput()
+relations
+  port_p.V_m = port_n.V_m
+  Phi = port_p.Phi
+  0 = port_p.Phi+port_n.Phi
+end
