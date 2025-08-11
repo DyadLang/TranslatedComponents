@@ -1,0 +1,4 @@
+partial component PartialTwoFlanges
+  flange_a = Spline()
+  flange_b = Spline()
+end

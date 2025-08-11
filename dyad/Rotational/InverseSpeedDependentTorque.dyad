@@ -1,0 +1,23 @@
+component InverseSpeedDependentTorque
+  extends Rotational.PartialTorque
+  # Nominal torque (if negative, torque is acting as load in positive direction of rotation)
+  parameter tau_nominal::Dyad.Torque
+  # Same direction of torque in both directions of rotation
+  structural parameter TorqueDirection::Boolean = true
+  # Nominal speed
+  parameter w_nominal::Dyad.AngularVelocity(min = Modelica.Constants.eps)
+  # Regularization below w0
+  parameter w0::Dyad.AngularVelocity(final min = Modelica.Constants.eps) = 0.1
+  # Angular velocity of flange with respect to support (= der(phi))
+  variable w::Dyad.AngularVelocity
+  # Accelerating torque acting at flange (= -flange.tau)
+  variable tau::Dyad.Torque
+relations
+  w = der(phi)
+  tau = -flange.tau
+  if TorqueDirection
+    tau = abs(w) < w0 ? tau_nominal * w_nominal / w0 : tau_nominal * w_nominal / abs(w)
+  else
+    tau = abs(w) < w0 ? tau_nominal * w / w0 : tau_nominal * w_nominal / w
+  end
+end

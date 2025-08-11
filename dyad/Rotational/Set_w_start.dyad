@@ -1,0 +1,7 @@
+component Set_w_start
+  w_start = RealInput()
+  flange = Spline()
+relations
+  initial der(flange.phi) = w_start
+  flange.tau = 0
+end

@@ -1,0 +1,5 @@
+component Set_flange_tau
+  flange = Spline()
+relations
+  flange.tau = 0
+end

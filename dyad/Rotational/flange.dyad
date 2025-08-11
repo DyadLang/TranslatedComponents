@@ -1,0 +1,4 @@
+connector Flange
+  potential phi::Dyad.Angle
+  flow tau::Dyad.Torque
+end

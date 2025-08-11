@@ -1,0 +1,7 @@
+partial component PartialTorque
+  extends Rotational.PartialElementaryOneFlangeAndSupport2
+  # Angle of flange with respect to support (= flange.phi - support.phi)
+  variable phi::Dyad.Angle
+relations
+  phi = flange.phi-phi_support
+end

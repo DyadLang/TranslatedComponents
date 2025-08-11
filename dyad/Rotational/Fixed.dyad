@@ -1,0 +1,7 @@
+component Fixed
+  flange = Spline()
+  # Fixed offset angle of housing
+  parameter phi0::Dyad.Angle = 0
+relations
+  flange.phi = phi0
+end

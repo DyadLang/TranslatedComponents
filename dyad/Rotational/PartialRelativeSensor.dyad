@@ -1,0 +1,6 @@
+partial component PartialRelativeSensor
+  flange_a = Spline()
+  flange_b = Spline()
+relations
+  0 = flange_a.tau + flange_b.tau
+end

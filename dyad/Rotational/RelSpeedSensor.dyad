@@ -1,0 +1,10 @@
+component RelSpeedSensor
+  extends Rotational.PartialRelativeSensor
+  w_rel = RealOutput()
+  # Relative angle between two flanges (flange_b.phi - flange_a.phi)
+  variable phi_rel::Dyad.Angle
+relations
+  phi_rel = flange_b.phi-flange_a.phi
+  w_rel = der(phi_rel)
+  0 = flange_a.tau
+end

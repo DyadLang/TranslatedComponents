@@ -1,0 +1,9 @@
+component AccSensor
+  extends Rotational.PartialAbsoluteSensor
+  a = RealOutput()
+  # Absolute angular velocity of flange
+  variable w::Dyad.AngularVelocity
+relations
+  w = der(flange.phi)
+  a = der(w)
+end
