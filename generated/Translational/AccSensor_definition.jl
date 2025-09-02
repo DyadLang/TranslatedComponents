@@ -12,7 +12,6 @@ This component is translated by DyadAI
 
 ## Connectors
 
- * `flange` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
  * `a` - This connector represents a real signal as an output from a component ([`RealOutput`](@ref))
 
 ## Variables
@@ -28,15 +27,17 @@ This component is translated by DyadAI
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables a(t), [output = true])
-  append!(__vars, @variables (v(t)), [description = "Absolute velocity of flange"])
+  append!(__vars, @variables (a(t)::Real), [output = true])
+  append!(__vars, @variables (v(t)::Real), [description = "Absolute velocity of flange"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named flange = __Dyad__Flange())
+  __systems = System[]
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -46,12 +47,10 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
-  push!(__eqs, 0 ~ flange.f)
-  push!(__eqs, v ~ D(flange.s))
   push!(__eqs, a ~ D(v))
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export AccSensor
 

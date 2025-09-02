@@ -10,44 +10,31 @@
 Linear 1D Translational spring
 This component is translated by DyadAI
 
-## Parameters:
+## Parameters: 
 
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
 | `c`         | Spring constant                         | N/m  |   1 |
 | `s_rel0`         | Unstretched spring length                         | m  |   0 |
-
-## Connectors
-
- * `flange_a` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
- * `flange_b` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
-
-## Variables
-
-| Name         | Description                         | Units  |
-| ------------ | ----------------------------------- | ------ |
-| `s_rel`         | Relative distance (= flange_b.s - flange_a.s)                         | m  |
-| `f`         | Force between flanges (positive in direction of flange axis R)                         | N  |
 """
 @component function Spring(; name, c=1, s_rel0=0)
 
   ### Symbolic Parameters
   __params = Any[]
-  append!(__params, @parameters (c::Float64 = c), [description = "Spring constant"])
-  append!(__params, @parameters (s_rel0::Float64 = s_rel0), [description = "Unstretched spring length"])
+  append!(__params, @parameters (c::Real = c), [description = "Spring constant"])
+  append!(__params, @parameters (s_rel0::Real = s_rel0), [description = "Unstretched spring length"])
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables (s_rel(t)), [description = "Relative distance (= flange_b.s - flange_a.s)"])
-  append!(__vars, @variables (f(t)), [description = "Force between flanges (positive in direction of flange axis R)"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named flange_a = __Dyad__Flange())
-  push!(__systems, @named flange_b = __Dyad__Flange())
+  __systems = System[]
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -57,13 +44,9 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
-  push!(__eqs, s_rel ~ flange_b.s - flange_a.s)
-  push!(__eqs, flange_b.f ~ f)
-  push!(__eqs, flange_a.f ~ -f)
-  push!(__eqs, f ~ c * (s_rel - s_rel0))
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export Spring
 
@@ -76,5 +59,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(Spring)) = print(io,
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")

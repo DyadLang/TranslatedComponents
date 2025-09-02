@@ -28,15 +28,18 @@ This component is translated by DyadAI
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables f(t), [input = true])
-  append!(__vars, @variables (s(t)), [description = "External support position (= flange.s)"])
+  append!(__vars, @variables (f(t)::Real), [input = true])
+  append!(__vars, @variables (s(t)::Real), [description = "External support position (= flange.s)"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
+  __systems = System[]
   push!(__systems, @named flange = __Dyad__Flange())
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -49,8 +52,8 @@ This component is translated by DyadAI
   push!(__eqs, flange.f ~ f)
   push!(__eqs, flange.s ~ s)
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export InternalSupport
 

@@ -24,7 +24,7 @@ This component is translated by DyadAI
 
   ### Symbolic Parameters
   __params = Any[]
-  append!(__params, @parameters (s0::Float64 = s0), [description = "Fixed offset position of housing"])
+  append!(__params, @parameters (s0::Real = s0), [description = "Fixed offset position of housing"])
 
   ### Variables
   __vars = Any[]
@@ -33,8 +33,11 @@ This component is translated by DyadAI
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
+  __systems = System[]
   push!(__systems, @named flange = __Dyad__Flange())
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -46,8 +49,8 @@ This component is translated by DyadAI
   __eqs = Equation[]
   push!(__eqs, flange.s ~ s0)
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export Fixed
 

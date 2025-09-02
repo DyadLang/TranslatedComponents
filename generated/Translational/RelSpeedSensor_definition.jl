@@ -12,8 +12,6 @@ This component is translated by DyadAI
 
 ## Connectors
 
- * `flange_a` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
- * `flange_b` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
  * `v_rel` - This connector represents a real signal as an output from a component ([`RealOutput`](@ref))
 
 ## Variables
@@ -29,16 +27,17 @@ This component is translated by DyadAI
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables v_rel(t), [output = true])
-  append!(__vars, @variables (s_rel(t)), [description = "Relative distance between two flanges (flange_b.s - flange_a.s)"])
+  append!(__vars, @variables (v_rel(t)::Real), [output = true])
+  append!(__vars, @variables (s_rel(t)::Real), [description = "Relative distance between two flanges (flange_b.s - flange_a.s)"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named flange_a = __Dyad__Flange())
-  push!(__systems, @named flange_b = __Dyad__Flange())
+  __systems = System[]
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -48,13 +47,10 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
-  push!(__eqs, 0 ~ flange_a.f + flange_b.f)
-  push!(__eqs, s_rel ~ flange_b.s - flange_a.s)
   push!(__eqs, v_rel ~ D(s_rel))
-  push!(__eqs, 0 ~ flange_a.f)
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export RelSpeedSensor
 
