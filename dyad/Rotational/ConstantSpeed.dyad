@@ -1,5 +1,5 @@
 component ConstantSpeed
-  extends Rotational.PartialTorque
+  extends PartialTorque
   # Fixed speed
   parameter w_fixed::Dyad.AngularVelocity
   # Angular velocity of flange with respect to support (= der(phi))

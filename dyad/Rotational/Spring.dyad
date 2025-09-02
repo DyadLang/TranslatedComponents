@@ -1,9 +1,9 @@
 component Spring
-  extends Rotational.PartialCompliant
+  extends PartialCompliant
   # Spring constant
-  parameter c::Dyad.RotationalSpringConstant(final min=0) = 100000
+  parameter c::Dyad.RotationalSpringConstant(final min = 0) = 100000
   # Unstretched spring angle
   parameter phi_rel0::Dyad.Angle = 0
 relations
-  tau = c*(phi_rel-phi_rel0)
+  tau = c * (phi_rel - phi_rel0)
 end

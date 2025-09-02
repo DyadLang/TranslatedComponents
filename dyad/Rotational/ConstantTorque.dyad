@@ -1,5 +1,5 @@
 component ConstantTorque
-  extends Rotational.PartialTorque
+  extends PartialTorque
   # Constant torque (if negative, torque is acting as load in positive direction of rotation)
   parameter tau_constant::Dyad.Torque
   # Angular velocity of flange with respect to support (= der(phi))

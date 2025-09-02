@@ -2,7 +2,7 @@ partial component PartialOneFlangeAndSupport
   flange = Spline()
   support = Spline() if useSupport
   internalSupport = Spline()
-  fixed = Rotational.Fixed() if not(useSupport)
+  fixed = Fixed() if not(useSupport)
   # = true, if support flange enabled, otherwise implicitly grounded
   structural parameter useSupport::Boolean = false
 relations

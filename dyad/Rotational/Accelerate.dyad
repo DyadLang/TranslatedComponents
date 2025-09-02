@@ -1,5 +1,5 @@
 component Accelerate
-  extends Rotational.PartialElementaryOneFlangeAndSupport2
+  extends PartialElementaryOneFlangeAndSupport2
   a_ref = RealInput()
   # Rotation angle of flange with respect to support
   variable phi::Dyad.Angle
@@ -8,7 +8,7 @@ component Accelerate
   # Angular acceleration of flange with respect to support
   variable a::Dyad.AngularAcceleration
 relations
-  phi = flange.phi-phi_support
+  phi = flange.phi - phi_support
   w = der(phi)
   a = der(w)
   a = a_ref

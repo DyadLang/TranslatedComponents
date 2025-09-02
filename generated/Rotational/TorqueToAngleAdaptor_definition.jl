@@ -58,8 +58,8 @@
   __eqs = Equation[]
   push!(__eqs, phi ~ flange.phi)
   push!(__eqs, flange.tau ~ tau)
-  push!(__eqs, w ~ w_internal)
-  push!(__eqs, a ~ a_internal)
+  push!(__eqs, connect(w, w_internal))
+  push!(__eqs, connect(a, a_internal))
 
   ### Control Structures
   if use_w

@@ -1,5 +1,5 @@
 component Torque
-  extends Rotational.PartialElementaryOneFlangeAndSupport2
+  extends PartialElementaryOneFlangeAndSupport2
   tau = RealInput()
 relations
   flange.tau = -tau

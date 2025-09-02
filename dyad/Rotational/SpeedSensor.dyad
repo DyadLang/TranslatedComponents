@@ -1,5 +1,5 @@
 component SpeedSensor
-  extends Rotational.PartialAbsoluteSensor
+  extends PartialAbsoluteSensor
   w = RealOutput()
 relations
   w = der(flange.phi)

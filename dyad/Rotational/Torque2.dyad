@@ -1,5 +1,5 @@
 component Torque2
-  extends Rotational.PartialTwoFlanges
+  extends PartialTwoFlanges
   tau = RealInput()
 relations
   flange_a.tau = tau

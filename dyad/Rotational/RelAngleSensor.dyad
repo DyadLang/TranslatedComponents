@@ -1,7 +1,7 @@
 component RelAngleSensor
-  extends Rotational.PartialRelativeSensor
+  extends PartialRelativeSensor
   phi_rel = RealOutput()
 relations
-  phi_rel = flange_b.phi-flange_a.phi
+  phi_rel = flange_b.phi - flange_a.phi
   0 = flange_a.tau
 end

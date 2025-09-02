@@ -1,5 +1,5 @@
 component TorqueStep
-  extends Rotational.PartialTorque
+  extends PartialTorque
   # Height of torque step (if negative, torque is acting as load)
   parameter stepTorque::Dyad.Torque = 1
   # Offset of torque
