@@ -1,0 +1,9 @@
+# Fixed flange
+# This component is translated by DyadAI
+component Fixed
+  flange = Flange()
+  # Fixed offset position of housing
+  parameter s0::Dyad.Position = 0
+relations
+  flange.s = s0
+end

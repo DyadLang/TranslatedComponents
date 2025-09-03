@@ -1,0 +1,15 @@
+# Ideal sensor to measure the relative acceleration between two flanges
+# This component is translated by DyadAI
+component RelAccSensor
+  extends Translational.PartialRelativeSensor
+  a_rel = RealOutput()
+  # Relative distance between two flanges (flange_b.s - flange_a.s)
+  variable s_rel::Dyad.Position
+  # Relative velocity between two flanges (der(flange_b.s) - der(flange_a.s))
+  variable v_rel::Dyad.Velocity
+relations
+  s_rel = flange_b.s-flange_a.s
+  v_rel = der(s_rel)
+  a_rel = der(v_rel)
+  0 = flange_a.f
+end

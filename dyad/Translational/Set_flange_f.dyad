@@ -1,0 +1,7 @@
+# Set flange_f
+# This component is translated by DyadAI
+component Set_flange_f
+  flange = Flange()
+relations
+  flange.f = 0
+end

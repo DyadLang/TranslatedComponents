@@ -1,0 +1,8 @@
+# Ideal sensor to measure the absolute velocity of flange
+# This component is translated by DyadAI
+component SpeedSensor
+  extends Translational.PartialAbsoluteSensor
+  v = RealOutput()
+relations
+  v = der(flange.s)
+end

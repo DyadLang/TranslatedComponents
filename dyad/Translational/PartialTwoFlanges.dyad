@@ -1,0 +1,6 @@
+# Component with two Translational 1D flanges
+# This component is translated by DyadAI
+partial component PartialTwoFlanges
+  flange_a = Flange()
+  flange_b = Flange()
+end

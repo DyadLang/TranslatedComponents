@@ -1,0 +1,12 @@
+# Ideal sensor to measure the relative velocity between two flanges
+# This component is translated by DyadAI
+component RelSpeedSensor
+  extends Translational.PartialRelativeSensor
+  v_rel = RealOutput()
+  # Relative distance between two flanges (flange_b.s - flange_a.s)
+  variable s_rel::Dyad.Position
+relations
+  s_rel = flange_b.s-flange_a.s
+  v_rel = der(s_rel)
+  0 = flange_a.f
+end

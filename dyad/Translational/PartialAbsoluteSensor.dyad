@@ -1,0 +1,7 @@
+# Device to measure a single absolute flange variable
+# This component is translated by DyadAI
+partial component PartialAbsoluteSensor
+  flange = Flange()
+relations
+  0 = flange.f
+end
