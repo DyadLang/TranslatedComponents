@@ -1,0 +1,7 @@
+component Set_phi_start
+  phi_start = RealInput()
+  flange = Spline()
+relations
+  initial flange.phi = phi_start
+  flange.tau = 0
+end

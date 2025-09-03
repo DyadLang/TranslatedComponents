@@ -1,0 +1,7 @@
+component TorqueSensor
+  extends PartialRelativeSensor
+  tau = RealOutput()
+relations
+  flange_a.phi = flange_b.phi
+  flange_a.tau = tau
+end

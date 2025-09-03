@@ -1,0 +1,18 @@
+partial component PartialElementaryTwoFlangesAndSupport2
+  flange_a = Spline()
+  flange_b = Spline()
+  support = Spline() if useSupport
+  # = true, if support flange enabled, otherwise implicitly grounded
+  structural parameter useSupport::Boolean = false
+  # Absolute angle of support flange
+  variable phi_support::Dyad.Angle
+relations
+  if !useSupport
+    phi_support = 0
+  else
+    initial support.phi = phi_support
+  end
+  if useSupport
+    initial support.tau = -flange_a.tau - flange_b.tau
+  end
+end

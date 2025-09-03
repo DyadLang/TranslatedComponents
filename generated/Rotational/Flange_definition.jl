@@ -3,10 +3,12 @@
 ### If you edit this code it is likely to get overwritten.
 ### Instead, update the Dyad source code and regenerate this file
 
-include("definitions.jl")
-include("experiments.jl")
-include("types.jl")
-include("precompilation.jl")
-# submodules:
-include("Rotational/module.jl")
-include("Translational/module.jl")
+
+@connector function Flange(; name)
+  vars = @variables begin
+    phi(t), []
+    tau(t), [connect = Flow]
+  end
+  return System(Equation[], t, vars, []; name)
+end
+export Flange

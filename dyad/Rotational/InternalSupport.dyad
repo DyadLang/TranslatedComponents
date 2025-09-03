@@ -1,0 +1,12 @@
+component InternalSupport
+  # External support torque (must be computed via torque balance in model where InternalSupport is used; = flange.tau)
+  tau = TorqueInput()
+  flange = Spline()
+  # External support angle (= flange.phi)
+  variable phi::Dyad.Angle
+relations
+  flange.tau = tau
+  flange.phi = phi
+end
+
+connector TorqueInput = input Dyad.Torque

@@ -1,0 +1,12 @@
+partial component PartialCompliant
+  flange_a = Spline()
+  flange_b = Spline()
+  # Relative rotation angle (= flange_b.phi - flange_a.phi)
+  variable phi_rel::Dyad.Angle
+  # Torque between flanges (= flange_b.tau)
+  variable tau::Dyad.Torque
+relations
+  phi_rel = flange_b.phi - flange_a.phi
+  flange_b.tau = tau
+  flange_a.tau = -tau
+end

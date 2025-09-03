@@ -1,0 +1,14 @@
+component TorqueStep
+  extends PartialTorque
+  # Height of torque step (if negative, torque is acting as load)
+  parameter stepTorque::Dyad.Torque = 1
+  # Offset of torque
+  parameter offsetTorque::Dyad.Torque = 0
+  # Torque = offset for time < startTime
+  parameter startTime::Dyad.Time = 0
+  # Accelerating torque acting at flange (= -flange.tau)
+  variable tau::Dyad.Torque
+relations
+  tau = -flange.tau
+  tau = offsetTorque + (time < startTime ? 0 : stepTorque)
+end

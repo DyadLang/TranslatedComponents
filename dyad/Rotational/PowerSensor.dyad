@@ -1,0 +1,7 @@
+component PowerSensor
+  extends PartialRelativeSensor
+  power = RealOutput()
+relations
+  flange_a.phi = flange_b.phi
+  power = flange_a.tau * der(flange_a.phi)
+end

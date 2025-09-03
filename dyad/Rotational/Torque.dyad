@@ -1,0 +1,6 @@
+component Torque
+  extends PartialElementaryOneFlangeAndSupport2
+  tau = RealInput()
+relations
+  flange.tau = -tau
+end

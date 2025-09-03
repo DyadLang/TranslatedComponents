@@ -1,0 +1,13 @@
+component ConstantTorque
+  extends PartialTorque
+  # Constant torque (if negative, torque is acting as load in positive direction of rotation)
+  parameter tau_constant::Dyad.Torque
+  # Angular velocity of flange with respect to support (= der(phi))
+  variable w::Dyad.AngularVelocity
+  # Accelerating torque acting at flange (= -flange.tau)
+  variable tau::Dyad.Torque
+relations
+  w = der(phi)
+  tau = -flange.tau
+  tau = tau_constant
+end

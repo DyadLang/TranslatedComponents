@@ -1,0 +1,11 @@
+component Disc
+  extends PartialTwoFlanges
+  # Fixed rotation of left flange with respect to right flange (= flange_b.phi - flange_a.phi)
+  parameter deltaPhi::Dyad.Angle = 0
+  # Absolute rotation angle of component
+  variable phi::Dyad.Angle
+relations
+  flange_a.phi = phi - deltaPhi / 2
+  flange_b.phi = phi + deltaPhi / 2
+  0 = flange_a.tau + flange_b.tau
+end

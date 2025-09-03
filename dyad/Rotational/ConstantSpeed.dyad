@@ -1,0 +1,10 @@
+component ConstantSpeed
+  extends PartialTorque
+  # Fixed speed
+  parameter w_fixed::Dyad.AngularVelocity
+  # Angular velocity of flange with respect to support (= der(phi))
+  variable w::Dyad.AngularVelocity
+relations
+  der(phi) = w
+  w = w_fixed
+end

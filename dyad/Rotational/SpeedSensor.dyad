@@ -1,0 +1,6 @@
+component SpeedSensor
+  extends PartialAbsoluteSensor
+  w = RealOutput()
+relations
+  w = der(flange.phi)
+end

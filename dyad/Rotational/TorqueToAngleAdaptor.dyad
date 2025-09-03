@@ -1,0 +1,28 @@
+component TorqueToAngleAdaptor
+  flange = Spline()
+  phi = RealOutput()
+  w = RealOutput() if use_w
+  a = RealOutput() if use_a
+  tau = RealInput()
+  w_internal = RealInput()
+  a_internal = RealInput()
+  # = true, enable the output connector w (angular velocity)
+  structural parameter use_w::Boolean = true
+  # = true, enable the output connector a (angular acceleration)
+  structural parameter use_a::Boolean = true
+relations
+  connect(w, w_internal)
+  connect(a, a_internal)
+  phi = flange.phi
+  if use_w
+    w_internal = der(phi)
+  else
+    w_internal = 0.0
+  end
+  if use_a
+    a_internal = der(w_internal)
+  else
+    a_internal = 0.0
+  end
+  flange.tau = tau
+end

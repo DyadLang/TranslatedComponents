@@ -1,0 +1,6 @@
+component AngleSensor
+  extends PartialAbsoluteSensor
+  phi = RealOutput()
+relations
+  phi = flange.phi
+end

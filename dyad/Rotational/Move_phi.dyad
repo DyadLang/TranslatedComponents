@@ -1,0 +1,6 @@
+component Move_phi
+  extends PartialElementaryOneFlangeAndSupport2
+  phi = RealInput()
+relations
+  phi = flange.phi - phi_support
+end

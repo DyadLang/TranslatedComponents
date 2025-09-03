@@ -1,0 +1,11 @@
+component IdealPlanetary
+  sun = Spline()
+  carrier = Spline()
+  ring = Spline()
+  # Number of ring_teeth/sun_teeth (e.g., ratio=100/50)
+  parameter ratio::Real = 100 / 50
+relations
+  (1 + ratio) * carrier.phi = sun.phi + ratio * ring.phi
+  ring.tau = ratio * sun.tau
+  carrier.tau = -(1 + ratio) * sun.tau
+end

@@ -1,0 +1,5 @@
+partial component PartialAbsoluteSensor
+  flange = Spline()
+relations
+  0 = flange.tau
+end
