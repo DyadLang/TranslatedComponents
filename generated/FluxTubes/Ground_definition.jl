@@ -9,10 +9,6 @@
 
 Zero magnetic potential
 This component is translated by DyadAI
-
-## Connectors
-
- * `port` - ([`MagneticPort`](@ref))
 """
 @component function Ground(; name)
 
@@ -26,8 +22,7 @@ This component is translated by DyadAI
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named port = FluxTubes.MagneticPort())
+  __systems = System[]
 
   ### Guesses
   __guesses = Dict()
@@ -40,7 +35,6 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
-  push!(__eqs, port.V_m ~ 0)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
@@ -56,5 +50,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(Ground)) = print(io,
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")

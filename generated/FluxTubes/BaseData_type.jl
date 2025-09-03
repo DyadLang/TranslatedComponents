@@ -5,12 +5,12 @@
 
 
 @kwdef mutable struct BaseData
-  label::String = "SoftMagnetic"
-  mu_i::Real = 1
-  B_myMax::Real = 1
-  c_a::Real = 1
-  c_b::Real = 1
-  n::Real = 1
+    label::String = "SoftMagnetic"
+    mu_i::Real = 1
+    B_myMax::Real = 1
+    c_a::Real = 1
+    c_b::Real = 1
+    n::Real = 1
 end
 
 function Base.setproperty!(value::BaseData, name::Symbol, x)
@@ -23,7 +23,7 @@ end
 
 Base.copy(x::BaseData) = BaseData(x.label, x.mu_i, x.B_myMax, x.c_a, x.c_b, x.n)
 
-Base.broadcasted(::Type{Pair}, model::ODESystem, pars::BaseData) = [
+Base.broadcasted(::Type{Pair}, model::System, pars::BaseData) = [
   model.label => pars.label,
   model.mu_i => pars.mu_i,
   model.B_myMax => pars.B_myMax,

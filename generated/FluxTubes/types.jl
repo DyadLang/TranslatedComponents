@@ -5,3 +5,6 @@
 ### Instead, update the Dyad source code and regenerate this file
 
 using ModelingToolkit
+
+include("BaseData_type.jl")
+include("SoftMagneticBaseData_type.jl")

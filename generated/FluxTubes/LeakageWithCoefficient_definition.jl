@@ -10,7 +10,7 @@
 Leakage reluctance with respect to the reluctance of a useful flux path (not for dynamic simulation of actuators)
 This component is translated by DyadAI
 
-## Parameters:
+## Parameters: 
 
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
@@ -18,18 +18,7 @@ This component is translated by DyadAI
 
 ## Connectors
 
- * `port_p` - ([`MagneticPort`](@ref))
- * `port_n` - ([`MagneticPort`](@ref))
  * `R_mUsefulTot` - This connector represents a real signal as an input to a component ([`RealInput`](@ref))
-
-## Variables
-
-| Name         | Description                         | Units  |
-| ------------ | ----------------------------------- | ------ |
-| `V_m`         | Magnetic potential difference of ports                         | A  |
-| `Phi`         | Magnetic flux from port_p to port_n                         | Wb  |
-| `R_m`         | Magnetic reluctance                         | H-1  |
-| `G_m`         | Magnetic permeance                         | H  |
 """
 @component function LeakageWithCoefficient(; name, c_usefulFlux=0.7)
 
@@ -40,18 +29,12 @@ This component is translated by DyadAI
   ### Variables
   __vars = Any[]
   append!(__vars, @variables (R_mUsefulTot(t)::Real), [input = true])
-  append!(__vars, @variables (V_m(t)::Real), [description = "Magnetic potential difference of ports"])
-  append!(__vars, @variables (Phi(t)::Real), [description = "Magnetic flux from port_p to port_n"])
-  append!(__vars, @variables (R_m(t)::Real), [description = "Magnetic reluctance"])
-  append!(__vars, @variables (G_m(t)::Real), [description = "Magnetic permeance"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named port_p = FluxTubes.MagneticPort())
-  push!(__systems, @named port_n = FluxTubes.MagneticPort())
+  __systems = System[]
 
   ### Guesses
   __guesses = Dict()
@@ -64,12 +47,6 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
-  push!(__eqs, V_m ~ port_p.V_m - port_n.V_m)
-  push!(__eqs, Phi ~ port_p.Phi)
-  push!(__eqs, 0 ~ port_p.Phi + port_n.Phi)
-  push!(__eqs, V_m ~ Phi * R_m)
-  push!(__eqs, R_m ~ 1 / G_m)
-  push!(__eqs, (1 - c_usefulFlux) * R_m ~ c_usefulFlux * R_mUsefulTot)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
@@ -85,5 +62,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(LeakageWithCoefficient)) = p
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")
