@@ -66,7 +66,7 @@
   push!(__eqs, 0 ~ ratio * flange_a.tau + flange_b.tau)
 
   ### Control Structures
-  if not(useSupport)
+  if !useSupport
       push!(__eqs, phi_support ~ 0)
   else
       __defaults[support.phi] = (phi_support)

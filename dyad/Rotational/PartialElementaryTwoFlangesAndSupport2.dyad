@@ -7,7 +7,7 @@ partial component PartialElementaryTwoFlangesAndSupport2
   # Absolute angle of support flange
   variable phi_support::Dyad.Angle
 relations
-  if not(useSupport)
+  if !useSupport
     phi_support = 0
   else
     initial support.phi = phi_support
