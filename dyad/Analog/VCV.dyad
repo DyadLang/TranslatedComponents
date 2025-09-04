@@ -1,0 +1,8 @@
+component VCV
+  extends TwoPort
+  # Voltage gain
+  parameter gain::Real = 1
+relations
+  v2 = v1 * gain
+  i1 = 0
+end

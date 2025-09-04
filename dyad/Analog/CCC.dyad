@@ -1,0 +1,8 @@
+component CCC
+  extends TwoPort
+  # Current gain
+  parameter gain::Real = 1
+relations
+  i2 = i1 * gain
+  v1 = 0
+end

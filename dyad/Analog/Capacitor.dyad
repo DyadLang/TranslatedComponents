@@ -1,0 +1,7 @@
+component Capacitor
+  extends OnePort
+  # Capacitance
+  parameter C::Dyad.Capacitance = 1
+relations
+  i = C * der(v)
+end

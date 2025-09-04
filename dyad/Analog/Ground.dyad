@@ -1,0 +1,5 @@
+component Ground
+  p = Pin()
+relations
+  p.v = 0
+end

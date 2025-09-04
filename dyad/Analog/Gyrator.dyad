@@ -1,0 +1,10 @@
+component Gyrator
+  extends TwoPort
+  # Primary gyration conductance
+  parameter G1::Dyad.Conductance = 1
+  # Secondary gyration conductance
+  parameter G2::Dyad.Conductance = 1
+relations
+  i1 = G2 * v2
+  i2 = -G1 * v1
+end

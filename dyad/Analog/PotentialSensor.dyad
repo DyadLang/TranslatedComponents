@@ -1,0 +1,7 @@
+component PotentialSensor
+  p = Pin()
+  phi = RealOutput()
+relations
+  p.i = 0
+  phi = p.v
+end

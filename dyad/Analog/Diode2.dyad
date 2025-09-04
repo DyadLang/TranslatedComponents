@@ -1,0 +1,44 @@
+component Diode2
+  extends OnePort
+  extends ConditionalHeatPort(T = 293.15)
+  # Forward voltage
+  parameter Vf::Dyad.Voltage = 0.7
+  # Reverse saturation current
+  parameter Ids::Dyad.Current = 1.0e-13
+  # Ohmic resistance
+  parameter Rs::Dyad.Resistance = 16
+  # Thermal voltage (kT/q), 0.026 at normal conditions (around 20 degC)
+  parameter Vt::Dyad.Voltage = Modelica.Constants.R * T / Modelica.Constants.F
+  # Emission coefficient
+  parameter N::Real = 1
+  # Reverse breakdown voltage
+  parameter Bv::Dyad.Voltage = 100
+  # Parallel conductance for numerical stability
+  parameter Gp::Dyad.Conductance = 1.0e-6
+  # Voltage across pure diode part
+  variable vd::Dyad.Voltage
+  # Diode current
+  variable id::Dyad.Current
+  # Linear continuation threshold
+  variable VdMax::Dyad.Voltage
+  # Current at threshold
+  variable iVdMax::Dyad.Current
+  # Conductance at threshold
+  variable diVdMax::Dyad.Conductance
+  variable Vt_applied::Dyad.Voltage
+relations
+  Vt_applied = useHeatPort ? 8.31446261815324 * T_heatPort / 96485.33212331001 : Vt
+  if vd < -Bv / 2
+    id = -Ids * (exp(-(vd + Bv) / (N * Vt_applied)) + 1 - 2 * exp(-Bv / (2 * N * Vt_applied)))
+  elseif vd < VdMax
+    id = Ids * (exp(vd / (N * Vt_applied)) - 1)
+  else
+    id = iVdMax + (vd - VdMax) * diVdMax
+  end
+  v = vd + id * Rs
+  i = id + v * Gp
+  LossPower = i * v
+  VdMax = Vf + (N * Vt_applied)
+  iVdMax = Ids * (exp(VdMax / (N * Vt_applied)) - 1)
+  diVdMax = Ids * exp(VdMax / (N * Vt_applied)) / (N * Vt_applied)
+end

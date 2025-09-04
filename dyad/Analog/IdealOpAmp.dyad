@@ -1,0 +1,23 @@
+component IdealOpAmp
+  p1 = Pin()
+  n1 = Pin()
+  p2 = Pin()
+  n2 = Pin()
+  # Voltage drop over the left port
+  variable v1::Dyad.Voltage
+  # Voltage drop over the right port
+  variable v2::Dyad.Voltage
+  # Current flowing from pos. to neg. pin of the left port
+  variable i1::Dyad.Current
+  # Current flowing from pos. to neg. pin of the right port
+  variable i2::Dyad.Current
+relations
+  v1 = p1.v - n1.v
+  v2 = p2.v - n2.v
+  0 = p1.i + n1.i
+  0 = p2.i + n2.i
+  i1 = p1.i
+  i2 = p2.i
+  v1 = 0
+  i1 = 0
+end

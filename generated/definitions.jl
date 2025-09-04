@@ -13,6 +13,7 @@ RuntimeGeneratedFunctions.init(@__MODULE__)
 
 D = Differential(t)
 
+import BlockComponents
 import DyadInterface
 @doc Markdown.doc"""
 This connector represents an electrical pin with voltage and current as the potential and flow variables, respectively.

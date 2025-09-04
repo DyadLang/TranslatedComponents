@@ -1,0 +1,16 @@
+component NonlinearResistorTest
+  resistor = NonlinearResistor(Ga = 1, Gb = 0.1, Ve = 0.5)
+  ground = Ground()
+  source = VoltageSource(V = 10)
+relations
+  connect(source.p, resistor.p)
+  connect(resistor.n, source.n, ground.p)
+metadata {
+  "Dyad": {
+    "tests": {
+      "`resistor voltage`": {"stop": 10, "expect": {"signals": ["resistor.v"]}},
+      "`resistor current`": {"stop": 10, "expect": {"signals": ["resistor.i"]}}
+    }
+  }
+}
+end

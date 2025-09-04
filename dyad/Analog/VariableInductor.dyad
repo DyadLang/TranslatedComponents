@@ -1,0 +1,17 @@
+component VariableInductor
+  extends OnePort
+  L = RealInput()
+  # Lower bound for variable inductance
+  parameter Lmin::Dyad.Inductance = Modelica.Constants.eps
+  # Initial Value
+  parameter IC::Dyad.Current = 0
+  # Decision if initial value IC shall be used
+  structural parameter UIC::Boolean = false
+  variable Psi::Dyad.MagneticFlux
+relations
+  if UIC
+    i = IC
+  end
+  Psi = identity(max(L, Lmin)) * i
+  v = der(Psi)
+end

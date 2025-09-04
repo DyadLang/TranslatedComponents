@@ -8,6 +8,7 @@ include("experiments.jl")
 include("types.jl")
 include("precompilation.jl")
 # submodules:
+include("Analog/module.jl")
 include("FluxTubes/module.jl")
 include("HeatTransfer/module.jl")
 include("Rotational/module.jl")

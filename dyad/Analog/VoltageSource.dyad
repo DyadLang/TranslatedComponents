@@ -1,0 +1,6 @@
+component VoltageSource
+  extends OnePort
+  parameter V::Voltage
+relations
+  v = V
+end

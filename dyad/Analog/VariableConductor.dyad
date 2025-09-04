@@ -1,0 +1,15 @@
+component VariableConductor
+  extends OnePort
+  extends ConditionalHeatPort(T = T_ref)
+  G = RealInput()
+  # Reference temperature
+  parameter T_ref::Dyad.Temperature = 300.15
+  # Temperature coefficient of conductance (G_actual = G/(1 + alpha*(T_heatPort - T_ref))
+  parameter alpha::Dyad.LinearTemperatureCoefficient = 0
+  # Actual conductance = G/(1 + alpha*(T_heatPort - T_ref))
+  variable G_actual::Dyad.Conductance
+relations
+  G_actual = G / (1 + alpha * (T_heatPort - T_ref))
+  i = G_actual * v
+  LossPower = v * i
+end

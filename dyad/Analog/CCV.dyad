@@ -1,0 +1,8 @@
+component CCV
+  extends TwoPort
+  # Transresistance
+  parameter transResistance::Dyad.Resistance = 1
+relations
+  v2 = i1 * transResistance
+  v1 = 0
+end

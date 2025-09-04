@@ -1,0 +1,23 @@
+component IdealTransformer
+  extends TwoPort
+  # Turns ratio primary:secondary voltage
+  parameter n::Real = 1
+  # Choice of considering magnetization
+  structural parameter considerMagnetization::Boolean = false
+  # Magnetization inductance w.r.t. primary side
+  parameter Lm1::Dyad.Inductance = 1
+  # Magnetization current w.r.t. primary side
+  variable im1::Dyad.Current
+  # Magnetic flux w.r.t. primary side
+  variable psim1::Dyad.MagneticFlux
+relations
+  im1 = i1 + i2 / n
+  if considerMagnetization
+    psim1 = Lm1 * im1
+    v1 = der(psim1)
+  else
+    psim1 = 0
+    im1 = 0
+  end
+  v1 = n * v2
+end

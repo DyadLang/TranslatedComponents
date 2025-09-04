@@ -1,0 +1,14 @@
+component ControlledOpenerWithArc
+  extends IdealSwitchWithArc
+  control = Pin()
+  # Switch level
+  parameter level::Dyad.Voltage = 0.5
+relations
+  if control.v > level
+    off = true
+    control.i = 0
+  else
+    off = false
+    control.i = 0
+  end
+end

@@ -1,0 +1,57 @@
+component Thyristor
+  extends ConditionalHeatPort
+  Anode = Pin()
+  Cathode = Pin()
+  Gate = Pin()
+  # Forward breakthrough voltage
+  parameter VDRM::Dyad.Voltage(final min = 0) = 100
+  # Reverse breakthrough voltage
+  parameter VRRM::Dyad.Voltage(final min = 0) = 100
+  # Saturation current
+  parameter IDRM::Dyad.Current = 0.1
+  # Conducting voltage
+  parameter VTM::Dyad.Voltage = 1.7
+  # Holding current
+  parameter IH::Dyad.Current = 0.006
+  # Conducting current
+  parameter ITM::Dyad.Current = 25
+  # Gate trigger voltage
+  parameter VGT::Dyad.Voltage = 0.7
+  # Gate trigger current
+  parameter IGT::Dyad.Current = 0.005
+  # Switch on time
+  parameter TON::Dyad.Time = 1.0e-6
+  # Switch off time
+  parameter TOFF::Dyad.Time = 1.5e-5
+  # Voltage equivalent of temperature (kT/qn)
+  parameter Vt::Dyad.Voltage = 0.04
+  # Reverse Breakthrough emission coefficient
+  parameter Nbv::Real = 0.74
+  parameter vRef::Dyad.Voltage = 0.65
+  parameter Von::Dyad.Voltage = 5
+  parameter Voff::Dyad.Voltage = 1.5
+  # Forward conducting mode resistance
+  parameter Ron::Dyad.Resistance = (VTM - 0.7) / ITM
+  # Blocking mode resistance
+  parameter Roff::Dyad.Resistance = (VDRM ^ 2) / VTM / IH
+  # Gate current
+  variable iGK::Dyad.Current
+  # Voltage between gate and cathode
+  variable vGK::Dyad.Voltage
+  # Voltage between anode and cathode
+  variable vAK::Dyad.Voltage
+  variable vControl::Dyad.Voltage
+  variable vContot::Dyad.Voltage
+  variable vConmain::Dyad.Voltage
+relations
+  Anode.i + Gate.i + Cathode.i = 0
+  vGK = Gate.v - Cathode.v
+  vAK = Anode.v - Cathode.v
+  iGK = Gate.i
+  vGK = vGK < vRef ? VGT / IGT * iGK : vRef ^ 2 / VGT + iGK * (VGT - vRef) / IGT
+  vContot = vConmain + (iGK < 0.95 * IGT ? 0 : (iGK < 0.95 * IGT + 1e-3 ? 10000 * (iGK - 0.95 * IGT) * vAK : 10 * vAK))
+  der(vControl) = (vContot - vControl) / ((vContot - vControl) > 0 ? 1.87 * TON : 0.638 * TOFF)
+  Anode.i = vAK < -VRRM ? -VRRM / Roff * exp(-(vAK + VRRM) / (Nbv * Vt)) : (vControl < Voff ? vAK / Roff : (vControl < Von ? vAK / (sqrt(Ron * Roff) * (Ron / Roff) ^ ((3 * ((2 * vControl - Von - Voff) / (2 * (Von - Voff))) - 4 * ((2 * vControl - Von - Voff) / (2 * (Von - Voff))) ^ 3) / 2)) : vAK / Ron))
+  vConmain = (Anode.i > IH or vAK > VDRM ? Von : 0)
+  LossPower = Anode.i * Anode.v + Cathode.i * Cathode.v + Gate.i * Gate.v
+end

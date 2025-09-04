@@ -1,0 +1,15 @@
+component Transformer
+  extends TwoPort
+  # Primary inductance
+  parameter L1::Dyad.Inductance = 1
+  # Secondary inductance
+  parameter L2::Dyad.Inductance = 1
+  # Coupling inductance
+  parameter M::Dyad.Inductance = 1
+  # Difference between voltage drop over primary inductor and voltage drop over secondary inductor
+  variable dv::Real
+relations
+  v1 = L1 * der(i1) + M * der(i2)
+  dv = (L1 - M) * der(i1) + (M - L2) * der(i2)
+  v2 = v1 - dv
+end

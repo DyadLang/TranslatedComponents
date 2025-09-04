@@ -1,0 +1,6 @@
+component CCCTest
+  ccc = CCC()
+  variable o::Real
+relations
+  ccc.i2 = der(o)
+end

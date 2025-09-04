@@ -1,0 +1,9 @@
+component CurrentSensor
+  p = Pin()
+  n = Pin()
+  i = RealOutput()
+relations
+  p.v = n.v
+  p.i = i
+  n.i = -i
+end

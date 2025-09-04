@@ -1,0 +1,17 @@
+component MultiSensor
+  pc = Pin()
+  nc = Pin()
+  pv = Pin()
+  nv = Pin()
+  i = RealOutput()
+  v = RealOutput()
+  power = RealOutput()
+relations
+  pc.i + nc.i = 0
+  pc.v - nc.v = 0
+  pv.i = 0
+  nv.i = 0
+  i = pc.i
+  v = pv.v - nv.v
+  power = v * i
+end
