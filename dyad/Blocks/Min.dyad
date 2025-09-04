@@ -1,0 +1,5 @@
+component Min
+  extends SI2SO
+relations
+  y = min(u1, u2)
+end

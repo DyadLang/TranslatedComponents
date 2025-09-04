@@ -1,0 +1,6 @@
+component IntegerPassThrough
+  u = IntegerInput()
+  y = IntegerOutput()
+relations
+  y = u
+end

@@ -1,0 +1,7 @@
+component Exponentiation
+  extends SISO
+  # Exponent of power
+  parameter exponent::Real = 2
+relations
+  y = u ^ exponent
+end

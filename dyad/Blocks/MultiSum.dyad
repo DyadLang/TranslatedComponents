@@ -1,0 +1,11 @@
+component MultiSum
+  extends PartialRealMISO
+  # Input gains
+  parameter k::Real = fill(1, nu)
+relations
+  if size(u, 1) > 0
+    y = k * u
+  else
+    y = 0
+  end
+end

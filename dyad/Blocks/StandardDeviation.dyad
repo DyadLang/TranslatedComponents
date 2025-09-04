@@ -1,0 +1,12 @@
+component StandardDeviation
+  u = RealInput()
+  y = RealOutput()
+  variance = Variance(t_eps = "t_eps")
+  sqrt1 = Sqrt()
+  # Standard deviation calculation starts at startTime + t_eps
+  parameter t_eps::Dyad.Time(min = "100*Modelica.Constants.eps") = 1.0e-7
+relations
+  connect(variance.u, u)
+  connect(sqrt1.u, variance.y)
+  connect(sqrt1.y, y)
+end

@@ -1,0 +1,7 @@
+partial component MI2BooleanMOs
+  u1 = RealInput()
+  u2 = RealInput()
+  y = BooleanOutput()
+  # Dimension of input and output vectors.
+  parameter n::Integer = 1
+end

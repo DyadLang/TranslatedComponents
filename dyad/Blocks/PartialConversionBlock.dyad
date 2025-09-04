@@ -1,0 +1,4 @@
+partial component PartialConversionBlock
+	u = RealInput()
+	y = RealOutput()
+end

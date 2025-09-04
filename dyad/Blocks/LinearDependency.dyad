@@ -1,0 +1,11 @@
+component LinearDependency
+  extends SI2SO
+  # Initial value
+  parameter y0::Real = 0
+  # Gain of u1
+  parameter k1::Real = 0
+  # Gain of u2
+  parameter k2::Real = 0
+relations
+  y = y0 + k1 * u1 + k2 * u2
+end

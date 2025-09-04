@@ -1,0 +1,8 @@
+component Gain
+	# Gain value multiplied with input signal
+	parameter k::Real = 1
+	u = RealInput()
+	y = RealOutput()
+relations
+	y = k*u
+end

@@ -1,0 +1,8 @@
+component Multiplex
+  u = RealVectorInput()
+  y = RealOutput()
+  # Dimension of input signal connector
+  parameter n::Integer(min = 0) = 0
+relations
+  y = u
+end

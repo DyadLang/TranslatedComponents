@@ -1,0 +1,6 @@
+partial component IntegerMIBooleanMOs
+  u = IntegerInput()
+  y = BooleanOutput()
+  # Number of inputs (= number of outputs)
+  parameter n::Integer = 1
+end

@@ -1,0 +1,6 @@
+partial component MISO
+	# Number of inputs
+	parameter nin::Integer = 1
+	u = RealInput()
+	y = RealOutput()
+end

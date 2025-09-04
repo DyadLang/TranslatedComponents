@@ -1,0 +1,7 @@
+component Feedback
+	u1 = RealInput()
+	u2 = RealInput()
+	y = RealOutput()
+relations
+	y = u1 - u2
+end

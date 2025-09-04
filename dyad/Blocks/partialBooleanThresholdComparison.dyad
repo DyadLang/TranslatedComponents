@@ -1,0 +1,6 @@
+partial component partialBooleanThresholdComparison
+  u = RealInput()
+  y = BooleanOutput()
+  # Comparison with respect to threshold
+  parameter threshold::Real = 0
+end

@@ -1,0 +1,8 @@
+component IntegerToBoolean
+  extends partialBooleanSO
+  u = IntegerInput()
+  # Output signal y is true, if input u >= threshold
+  parameter threshold::Integer = 1
+relations
+  y = u >= threshold
+end

@@ -1,0 +1,5 @@
+component Not
+  extends PartialBooleanSISO_small
+relations
+  y = !u
+end

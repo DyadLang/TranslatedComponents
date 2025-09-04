@@ -1,0 +1,6 @@
+partial component partialBooleanSI3SO
+  u1 = BooleanInput()
+  u2 = BooleanInput()
+  u3 = BooleanInput()
+  y = BooleanOutput()
+end

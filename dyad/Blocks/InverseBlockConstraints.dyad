@@ -1,0 +1,9 @@
+component InverseBlockConstraints
+	u1 = RealInput()
+	u2 = RealInput()
+	y1 = RealOutput()
+	y2 = RealOutput()
+relations
+	u1 = u2
+y1 = y2
+end

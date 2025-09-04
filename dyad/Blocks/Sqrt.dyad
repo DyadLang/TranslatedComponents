@@ -1,0 +1,5 @@
+component Sqrt
+  extends SISO
+relations
+  y = sqrt(u)
+end

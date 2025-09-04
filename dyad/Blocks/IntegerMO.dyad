@@ -1,0 +1,5 @@
+partial component IntegerMO
+  y = IntegerOutput()
+  # Number of outputs
+  parameter nout::Integer(min = 1) = 1
+end

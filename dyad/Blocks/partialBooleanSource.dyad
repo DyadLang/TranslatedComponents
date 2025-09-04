@@ -1,0 +1,3 @@
+partial component partialBooleanSource
+  y = BooleanOutput()
+end
