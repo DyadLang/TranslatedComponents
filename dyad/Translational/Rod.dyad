@@ -1,7 +1,7 @@
 # Rod without inertia
 # This component is translated by DyadAI
 component Rod
-  extends Translational.PartialRigid
+  extends PartialRigid
 relations
-  0 = flange_a.f+flange_b.f
+  0 = flange_a.f + flange_b.f
 end

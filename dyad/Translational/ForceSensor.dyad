@@ -1,7 +1,7 @@
 # Ideal sensor to measure the force between two flanges
 # This component is translated by DyadAI
 component ForceSensor
-  extends Translational.PartialRelativeSensor
+  extends PartialRelativeSensor
   f = RealOutput()
 relations
   flange_a.s = flange_b.s

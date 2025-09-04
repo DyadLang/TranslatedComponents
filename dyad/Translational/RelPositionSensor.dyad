@@ -1,9 +1,9 @@
 # Ideal sensor to measure the relative position between two flanges
 # This component is translated by DyadAI
 component RelPositionSensor
-  extends Translational.PartialRelativeSensor
+  extends PartialRelativeSensor
   s_rel = RealOutput()
 relations
-  s_rel = flange_b.s-flange_a.s
+  s_rel = flange_b.s - flange_a.s
   0 = flange_a.f
 end

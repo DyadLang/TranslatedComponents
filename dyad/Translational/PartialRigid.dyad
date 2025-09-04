@@ -1,12 +1,12 @@
 # Rigid connection of two Translational 1D flanges
 # This component is translated by DyadAI
 partial component PartialRigid
-  extends Translational.PartialTwoFlanges
+  extends PartialTwoFlanges
   # Length of component, from left flange to right flange (= flange_b.s - flange_a.s)
   parameter L::Dyad.Length = 0
   # Absolute position of center of component (s = flange_a.s + L/2 = flange_b.s - L/2)
   variable s::Dyad.Position
 relations
-  flange_a.s = s-L/2
-  flange_b.s = s+L/2
+  flange_a.s = s - L / 2
+  flange_b.s = s + L / 2
 end

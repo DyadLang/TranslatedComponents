@@ -1,7 +1,7 @@
 # Ideal sensor to measure the absolute position of flange
 # This component is translated by DyadAI
 component PositionSensor
-  extends Translational.PartialAbsoluteSensor
+  extends PartialAbsoluteSensor
   s = RealOutput()
 relations
   s = flange.s

@@ -1,7 +1,7 @@
 # Ideal sensor to measure the absolute acceleration of flange
 # This component is translated by DyadAI
 component AccSensor
-  extends Translational.PartialAbsoluteSensor
+  extends PartialAbsoluteSensor
   a = RealOutput()
   # Absolute velocity of flange
   variable v::Dyad.Velocity

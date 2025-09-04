@@ -1,7 +1,7 @@
 # Input signal acting as force on two flanges
 # This component is translated by DyadAI
 component Force2
-  extends Translational.PartialTwoFlanges
+  extends PartialTwoFlanges
   f = RealInput()
 relations
   flange_a.f = f
