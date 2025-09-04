@@ -12,6 +12,8 @@ This component is translated by DyadAI
 
 ## Connectors
 
+ * `port_p` - ([`MagneticPort`](@ref))
+ * `port_n` - ([`MagneticPort`](@ref))
  * `V_m` - This connector represents a real signal as an output from a component ([`RealOutput`](@ref))
 
 ## Variables
@@ -35,6 +37,8 @@ This component is translated by DyadAI
 
   ### Components
   __systems = System[]
+  push!(__systems, @named port_p = TranslatedComponents.FluxTubes.MagneticPort())
+  push!(__systems, @named port_n = TranslatedComponents.FluxTubes.MagneticPort())
 
   ### Guesses
   __guesses = Dict()
@@ -47,7 +51,10 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
+  push!(__eqs, V_m ~ port_p.V_m - port_n.V_m)
+  push!(__eqs, Phi ~ port_p.Phi)
   push!(__eqs, Phi ~ 0)
+  push!(__eqs, 0 ~ port_p.Phi + port_n.Phi)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)

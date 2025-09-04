@@ -1,7 +1,7 @@
 # Idle running branch
 # This component is translated by DyadAI
 component Idle
-  extends FluxTubes.TwoPort
+  extends TwoPort
 relations
   Phi = 0
 end

@@ -15,6 +15,20 @@ This component is translated by DyadAI
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
 | `t`         | Thickness of spherical shell                         | m  |   0.01 |
+
+## Connectors
+
+ * `port_p` - ([`MagneticPort`](@ref))
+ * `port_n` - ([`MagneticPort`](@ref))
+
+## Variables
+
+| Name         | Description                         | Units  | 
+| ------------ | ----------------------------------- | ------ | 
+| `V_m`         | Magnetic potential difference of ports                         | A  | 
+| `Phi`         | Magnetic flux from port_p to port_n                         | Wb  | 
+| `R_m`         | Magnetic reluctance                         | H-1  | 
+| `G_m`         | Magnetic permeance                         | H  | 
 """
 @component function QuarterHollowSphere(; name, t=0.01)
 
@@ -24,12 +38,18 @@ This component is translated by DyadAI
 
   ### Variables
   __vars = Any[]
+  append!(__vars, @variables (V_m(t)::Real), [description = "Magnetic potential difference of ports"])
+  append!(__vars, @variables (Phi(t)::Real), [description = "Magnetic flux from port_p to port_n"])
+  append!(__vars, @variables (R_m(t)::Real), [description = "Magnetic reluctance"])
+  append!(__vars, @variables (G_m(t)::Real), [description = "Magnetic permeance"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
   __systems = System[]
+  push!(__systems, @named port_p = TranslatedComponents.FluxTubes.MagneticPort())
+  push!(__systems, @named port_n = TranslatedComponents.FluxTubes.MagneticPort())
 
   ### Guesses
   __guesses = Dict()
@@ -42,6 +62,12 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
+  push!(__eqs, V_m ~ port_p.V_m - port_n.V_m)
+  push!(__eqs, Phi ~ port_p.Phi)
+  push!(__eqs, 0 ~ port_p.Phi + port_n.Phi)
+  push!(__eqs, V_m ~ Phi * R_m)
+  push!(__eqs, R_m ~ 1 / G_m)
+  push!(__eqs, G_m ~ 0.00000125663706212 * 0.25 * t)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)

@@ -1,1 +1,1 @@
-type M330_50A = FluxTubes.SoftMagneticBaseData(label="M330-50A", mu_i=500, B_myMax=0.7, c_a=24000, c_b=9.38, n=9.6)
+type M330_50A = SoftMagneticBaseData(label = "M330-50A", mu_i = 500, B_myMax = 0.7, c_a = 24000, c_b = 9.38, n = 9.6)

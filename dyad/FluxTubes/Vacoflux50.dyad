@@ -1,1 +1,1 @@
-type Vacoflux50 = FluxTubes.SoftMagneticBaseData(label="VACOFLUX 50", mu_i=3850, B_myMax=1.75, c_a=11790, c_b=2.63, n=15.02)
+type Vacoflux50 = SoftMagneticBaseData(label = "VACOFLUX 50", mu_i = 3850, B_myMax = 1.75, c_a = 11790, c_b = 2.63, n = 15.02)

@@ -1,1 +1,1 @@
-type NdFeB = FluxTubes.HardMagneticBaseData(H_cBRef=900000, B_rRef=1.2, T_ref=20+273.15, alpha_Br=-0.001)
+type NdFeB = HardMagneticBaseData(H_cBRef = 900000, B_rRef = 1.2, T_ref = 20 + 273.15, alpha_Br = -0.001)

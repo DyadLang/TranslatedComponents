@@ -9,6 +9,11 @@
 
 Short cut branch
 This component is translated by DyadAI
+
+## Connectors
+
+ * `port_p` - ([`MagneticPort`](@ref))
+ * `port_n` - ([`MagneticPort`](@ref))
 """
 @component function Short(; name)
 
@@ -23,6 +28,8 @@ This component is translated by DyadAI
 
   ### Components
   __systems = System[]
+  push!(__systems, @named port_p = TranslatedComponents.FluxTubes.MagneticPort())
+  push!(__systems, @named port_n = TranslatedComponents.FluxTubes.MagneticPort())
 
   ### Guesses
   __guesses = Dict()
@@ -35,6 +42,7 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
+  push!(__eqs, connect(port_p, port_n))
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)

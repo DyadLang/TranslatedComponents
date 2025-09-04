@@ -1,8 +1,8 @@
 # Variable permeance
 # This component is translated by DyadAI
 component VariablePermeance
-  extends FluxTubes.TwoPort
+  extends TwoPort
   G_m = RealInput()
 relations
-  G_m*V_m = Phi
+  G_m * V_m = Phi
 end

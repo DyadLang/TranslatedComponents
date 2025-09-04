@@ -1,4 +1,4 @@
 partial component TwoPortElementary
-  port_p = FluxTubes.MagneticPort()
-  port_n = FluxTubes.MagneticPort()
+  port_p = MagneticPort()
+  port_n = MagneticPort()
 end

@@ -9,6 +9,13 @@
 
 Crossing of two branches
 This component is translated by DyadAI
+
+## Connectors
+
+ * `port_p1` - ([`MagneticPort`](@ref))
+ * `port_p2` - ([`MagneticPort`](@ref))
+ * `port_n1` - ([`MagneticPort`](@ref))
+ * `port_n2` - ([`MagneticPort`](@ref))
 """
 @component function Crossing(; name)
 
@@ -23,6 +30,10 @@ This component is translated by DyadAI
 
   ### Components
   __systems = System[]
+  push!(__systems, @named port_p1 = TranslatedComponents.FluxTubes.MagneticPort())
+  push!(__systems, @named port_p2 = TranslatedComponents.FluxTubes.MagneticPort())
+  push!(__systems, @named port_n1 = TranslatedComponents.FluxTubes.MagneticPort())
+  push!(__systems, @named port_n2 = TranslatedComponents.FluxTubes.MagneticPort())
 
   ### Guesses
   __guesses = Dict()
@@ -35,6 +46,8 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
+  push!(__eqs, connect(port_p1, port_p2))
+  push!(__eqs, connect(port_n1, port_n2))
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)

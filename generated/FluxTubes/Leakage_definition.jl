@@ -5,16 +5,7 @@
 
 
 @doc Markdown.doc"""
-   QuarterCylinder(; name, l)
-
-Leakage flux from one edge to the opposite plane through a quarter cylinder
-This component is translated by DyadAI
-
-## Parameters: 
-
-| Name         | Description                         | Units  |   Default value |
-| ------------ | ----------------------------------- | ------ | --------------- |
-| `l`         | Axial length orthogonal to flux (=2*pi*r for cylindrical pole and r>>distance between edge and plane)                         | m  |   0.1 |
+   Leakage(; name)
 
 ## Connectors
 
@@ -30,11 +21,10 @@ This component is translated by DyadAI
 | `R_m`         | Magnetic reluctance                         | H-1  | 
 | `G_m`         | Magnetic permeance                         | H  | 
 """
-@component function QuarterCylinder(; name, l=0.1)
+@component function Leakage(; name)
 
   ### Symbolic Parameters
   __params = Any[]
-  append!(__params, @parameters (l::Real = l), [description = "Axial length orthogonal to flux (=2*pi*r for cylindrical pole and r>>distance between edge and plane)"])
 
   ### Variables
   __vars = Any[]
@@ -67,14 +57,13 @@ This component is translated by DyadAI
   push!(__eqs, 0 ~ port_p.Phi + port_n.Phi)
   push!(__eqs, V_m ~ Phi * R_m)
   push!(__eqs, R_m ~ 1 / G_m)
-  push!(__eqs, G_m ~ 0.00000125663706212 * 0.52 * l)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
-export QuarterCylinder
+export Leakage
 
-Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(QuarterCylinder)) = print(io,
+Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(Leakage)) = print(io,
   """<div style="height: 100%; width: 100%; background-color: white"><div style="margin: auto; height: 500px; width: 500px; padding: 200px"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000"
     overflow="visible" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
       <defs>

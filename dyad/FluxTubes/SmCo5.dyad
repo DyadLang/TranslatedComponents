@@ -1,1 +1,1 @@
-type SmCo5 = FluxTubes.HardMagneticBaseData(H_cBRef=720000, B_rRef=0.95, T_ref=20+273.15, alpha_Br=-0.0004)
+type SmCo5 = HardMagneticBaseData(H_cBRef = 720000, B_rRef = 0.95, T_ref = 20 + 273.15, alpha_Br = -0.0004)

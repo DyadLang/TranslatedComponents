@@ -1,1 +1,1 @@
-type DC03 = FluxTubes.SoftMagneticBaseData(label="DC03", mu_i=0, B_myMax=1.05, c_a=27790, c_b=16, n=10.4)
+type DC03 = SoftMagneticBaseData(label = "DC03", mu_i = 0, B_myMax = 1.05, c_a = 27790, c_b = 16, n = 10.4)
