@@ -4,5 +4,5 @@ component FromKelvin
   Kelvin = RealInput()
   Rankine = RealOutput()
 relations
-  Rankine = HeatTransfer.to_degRk(Kelvin)
+  Rankine = to_degRk(Kelvin)
 end

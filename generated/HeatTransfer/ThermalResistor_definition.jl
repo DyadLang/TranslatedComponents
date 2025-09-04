@@ -10,7 +10,7 @@
 Lumped thermal element transporting heat without storing it
 This component is translated by DyadAI
 
-## Parameters:
+## Parameters: 
 
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
@@ -25,29 +25,32 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
 ## Variables
 
-| Name         | Description                         | Units  |
-| ------------ | ----------------------------------- | ------ |
-| `Q_flow`         | Heat flow rate from port_a -> port_b                         | W  |
-| `dT`         | port_a.T - port_b.T                         | K  |
+| Name         | Description                         | Units  | 
+| ------------ | ----------------------------------- | ------ | 
+| `Q_flow`         | Heat flow rate from port_a -> port_b                         | W  | 
+| `dT`         | port_a.T - port_b.T                         | K  | 
 """
 @component function ThermalResistor(; name, R=nothing)
 
   ### Symbolic Parameters
   __params = Any[]
-  append!(__params, @parameters (R::Float64 = R), [description = "Constant thermal resistance of material"])
+  append!(__params, @parameters (R::Real = R), [description = "Constant thermal resistance of material"])
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables (Q_flow(t)), [description = "Heat flow rate from port_a -> port_b"])
-  append!(__vars, @variables (dT(t)), [description = "port_a.T - port_b.T"])
+  append!(__vars, @variables (Q_flow(t)::Real), [description = "Heat flow rate from port_a -> port_b"])
+  append!(__vars, @variables (dT(t)::Real), [description = "port_a.T - port_b.T"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named port_a = HeatTransfer.HeatPort())
-  push!(__systems, @named port_b = HeatTransfer.HeatPort())
+  __systems = System[]
+  push!(__systems, @named port_a = TranslatedComponents.HeatTransfer.HeatPort())
+  push!(__systems, @named port_b = TranslatedComponents.HeatTransfer.HeatPort())
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -62,8 +65,8 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
   push!(__eqs, port_b.Q_flow ~ -Q_flow)
   push!(__eqs, dT ~ R * Q_flow)
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export ThermalResistor
 
@@ -76,5 +79,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(ThermalResistor)) = print(io
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")

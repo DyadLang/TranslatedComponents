@@ -10,7 +10,7 @@
 Fixed temperature boundary condition in Kelvin
 This component is translated by DyadAI
 
-## Parameters:
+## Parameters: 
 
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
@@ -25,7 +25,7 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
   ### Symbolic Parameters
   __params = Any[]
-  append!(__params, @parameters (T::Float64 = T), [description = "Fixed temperature at port"])
+  append!(__params, @parameters (T::Real = T), [description = "Fixed temperature at port"])
 
   ### Variables
   __vars = Any[]
@@ -34,8 +34,11 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named port = HeatTransfer.HeatPort())
+  __systems = System[]
+  push!(__systems, @named port = TranslatedComponents.HeatTransfer.HeatPort())
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -47,8 +50,8 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
   __eqs = Equation[]
   push!(__eqs, port.T ~ T)
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export FixedTemperature
 
@@ -61,5 +64,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(FixedTemperature)) = print(i
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")

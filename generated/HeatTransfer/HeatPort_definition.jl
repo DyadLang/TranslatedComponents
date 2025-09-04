@@ -13,6 +13,6 @@ This component is translated by DyadAI
     T(t), []
     Q_flow(t), [connect = Flow]
   end
-  return ODESystem(Equation[], t, vars, []; name)
+  return System(Equation[], t, vars, []; name)
 end
 export HeatPort

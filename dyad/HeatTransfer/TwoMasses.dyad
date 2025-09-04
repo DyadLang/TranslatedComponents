@@ -1,15 +1,15 @@
 # Simple conduction demo
 # This component is translated by DyadAI
 component TwoMasses
-  mass1 = HeatTransfer.HeatCapacitor(C=15)
-  mass2 = HeatTransfer.HeatCapacitor(C=15)
-  conduction = HeatTransfer.ThermalConductor(G=10)
-  Tsensor1 = HeatTransfer.TemperatureSensor()
-  Tsensor2 = HeatTransfer.TemperatureSensor()
+  mass1 = HeatCapacitor(C = 15)
+  mass2 = HeatCapacitor(C = 15)
+  conduction = ThermalConductor(G = 10)
+  Tsensor1 = TemperatureSensor()
+  Tsensor2 = TemperatureSensor()
   # Projected final temperature
   parameter T_final_K::Dyad.Temperature
 relations
-  initial T_final_K = (mass1.T*mass1.C+mass2.T*mass2.C)/(mass1.C+mass2.C)
+  initial T_final_K = (mass1.T * mass1.C + mass2.T * mass2.C) / (mass1.C + mass2.C)
   connect(mass1.port, conduction.port_a)
   connect(conduction.port_b, mass2.port)
   connect(mass1.port, Tsensor1.port)

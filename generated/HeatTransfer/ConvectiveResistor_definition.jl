@@ -20,10 +20,10 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
 ## Variables
 
-| Name         | Description                         | Units  |
-| ------------ | ----------------------------------- | ------ |
-| `Q_flow`         | Heat flow rate from solid -> fluid                         | W  |
-| `dT`         | = solid.T - fluid.T                         | K  |
+| Name         | Description                         | Units  | 
+| ------------ | ----------------------------------- | ------ | 
+| `Q_flow`         | Heat flow rate from solid -> fluid                         | W  | 
+| `dT`         | = solid.T - fluid.T                         | K  | 
 """
 @component function ConvectiveResistor(; name)
 
@@ -32,17 +32,20 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables Rc(t), [input = true])
-  append!(__vars, @variables (Q_flow(t)), [description = "Heat flow rate from solid -> fluid"])
-  append!(__vars, @variables (dT(t)), [description = "= solid.T - fluid.T"])
+  append!(__vars, @variables (Rc(t)::Real), [input = true])
+  append!(__vars, @variables (Q_flow(t)::Real), [description = "Heat flow rate from solid -> fluid"])
+  append!(__vars, @variables (dT(t)::Real), [description = "= solid.T - fluid.T"])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named solid = HeatTransfer.HeatPort())
-  push!(__systems, @named fluid = HeatTransfer.HeatPort())
+  __systems = System[]
+  push!(__systems, @named solid = TranslatedComponents.HeatTransfer.HeatPort())
+  push!(__systems, @named fluid = TranslatedComponents.HeatTransfer.HeatPort())
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -57,8 +60,8 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
   push!(__eqs, fluid.Q_flow ~ -Q_flow)
   push!(__eqs, dT ~ Rc * Q_flow)
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export ConvectiveResistor
 
@@ -71,5 +74,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(ConvectiveResistor)) = print
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")

@@ -22,7 +22,7 @@ This connector represents an electrical pin with voltage and current as the pote
     v(t), []
     i(t), [connect = Flow]
   end
-  return ODESystem(Equation[], t, vars, []; name)
+  return System(Equation[], t, vars, []; name)
 end
 @doc Markdown.doc"""
 This connector represents a thermal node with temperature and heat flow as the potential and flow variables, respectively.
@@ -32,7 +32,7 @@ This connector represents a thermal node with temperature and heat flow as the p
     T(t), []
     Q(t), [connect = Flow]
   end
-  return ODESystem(Equation[], t, vars, []; name)
+  return System(Equation[], t, vars, []; name)
 end
 @doc Markdown.doc"""
 This connector represents a mechanical flange with position and force as the potential and flow variables, respectively.
@@ -42,7 +42,7 @@ This connector represents a mechanical flange with position and force as the pot
     s(t), []
     f(t), [connect = Flow]
   end
-  return ODESystem(Equation[], t, vars, []; name)
+  return System(Equation[], t, vars, []; name)
 end
 @doc Markdown.doc"""
 This connector represents a rotational spline with angle and torque as the potential and flow variables, respectively.
@@ -52,7 +52,7 @@ This connector represents a rotational spline with angle and torque as the poten
     phi(t), []
     tau(t), [connect = Flow]
   end
-  return ODESystem(Equation[], t, vars, []; name)
+  return System(Equation[], t, vars, []; name)
 end
 
 include("BodyRadiation_definition.jl")

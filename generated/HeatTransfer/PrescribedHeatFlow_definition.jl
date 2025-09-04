@@ -10,7 +10,7 @@
 Prescribed heat flow boundary condition
 This component is translated by DyadAI
 
-## Parameters:
+## Parameters: 
 
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
@@ -27,19 +27,22 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
   ### Symbolic Parameters
   __params = Any[]
-  append!(__params, @parameters (T_ref::Float64 = T_ref), [description = "Reference temperature"])
-  append!(__params, @parameters (alpha::Float64 = alpha), [description = "Temperature coefficient of heat flow rate"])
+  append!(__params, @parameters (T_ref::Real = T_ref), [description = "Reference temperature"])
+  append!(__params, @parameters (alpha::Real = alpha), [description = "Temperature coefficient of heat flow rate"])
 
   ### Variables
   __vars = Any[]
-  append!(__vars, @variables Q_flow(t), [input = true])
+  append!(__vars, @variables (Q_flow(t)::Real), [input = true])
 
   ### Constants
   __constants = Any[]
 
   ### Components
-  __systems = ODESystem[]
-  push!(__systems, @named port = HeatTransfer.HeatPort())
+  __systems = System[]
+  push!(__systems, @named port = TranslatedComponents.HeatTransfer.HeatPort())
+
+  ### Guesses
+  __guesses = Dict()
 
   ### Defaults
   __defaults = Dict()
@@ -51,8 +54,8 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
   __eqs = Equation[]
   push!(__eqs, port.Q_flow ~ -Q_flow * (1 + alpha * (port.T - T_ref)))
 
-  # Return completely constructed ODESystem
-  return ODESystem(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, name, initialization_eqs=__initialization_eqs)
+  # Return completely constructed System
+  return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
 end
 export PrescribedHeatFlow
 
@@ -65,5 +68,5 @@ Base.show(io::IO, a::MIME"image/svg+xml", t::typeof(PrescribedHeatFlow)) = print
         <filter id='blue-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="100" flood-color="#0000ff" flood-opacity="0.5"/></filter>
         <filter id='drop-shadow' color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="40" flood-opacity="0.5"/></filter>
       </defs>
-
+    
       </svg></div></div>""")

@@ -1,9 +1,9 @@
 # Lumped thermal element transporting heat without storing it
 # This component is translated by DyadAI
 component ThermalResistor
-  extends HeatTransfer.Element1D
+  extends Element1D
   # Constant thermal resistance of material
   parameter R::Dyad.ThermalResistance
 relations
-  dT = R*Q_flow
+  dT = R * Q_flow
 end
