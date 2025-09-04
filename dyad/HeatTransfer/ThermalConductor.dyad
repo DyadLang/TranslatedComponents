@@ -1,0 +1,9 @@
+# Lumped thermal element transporting heat without storing it
+# This component is translated by DyadAI
+component ThermalConductor
+  extends Element1D
+  # Constant thermal conductance of material
+  parameter G::Dyad.ThermalConductance
+relations
+  Q_flow = G * dT
+end

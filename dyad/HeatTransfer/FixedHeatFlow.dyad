@@ -1,0 +1,13 @@
+# Fixed heat flow boundary condition
+# This component is translated by DyadAI
+component FixedHeatFlow
+  port = HeatPort()
+  # Fixed heat flow rate at port
+  parameter Q_flow::Dyad.HeatFlowRate
+  # Reference temperature
+  parameter T_ref::Dyad.Temperature = 293.15
+  # Temperature coefficient of heat flow rate
+  parameter alpha::Dyad.LinearTemperatureCoefficient = 0
+relations
+  port.Q_flow = -Q_flow*(1+alpha*(port.T-T_ref))
+end

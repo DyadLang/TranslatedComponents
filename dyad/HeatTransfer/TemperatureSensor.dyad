@@ -1,0 +1,8 @@
+# Absolute temperature sensor in Kelvin
+# This component is translated by DyadAI
+component TemperatureSensor
+  T = RealOutput()
+  port = HeatPort()
+relations
+  port.Q_flow = 0
+end

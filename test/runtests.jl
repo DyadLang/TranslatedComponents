@@ -15,3 +15,7 @@ include("rotational.jl")
 using TranslatedComponents.FluxTubes
 
 include("flux_tubes.jl")
+
+using TranslatedComponents.HeatTransfer
+
+include("heat_transfer.jl")

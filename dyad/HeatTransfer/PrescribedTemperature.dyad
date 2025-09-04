@@ -1,0 +1,8 @@
+# Variable temperature boundary condition in Kelvin
+# This component is translated by DyadAI
+component PrescribedTemperature
+  port = HeatPort()
+  T = RealInput()
+relations
+  port.T = T
+end
