@@ -20,10 +20,6 @@
 @named model = Crossing()
 @test model isa ODESystem
 
-# Smoke test for EighthOfHollowSphere
-@named model = EighthOfHollowSphere()
-@test model isa ODESystem
-
 # Smoke test for EighthOfSphere
 @named model = EighthOfSphere()
 @test model isa ODESystem
@@ -58,10 +54,6 @@
 
 # Smoke test for QuarterCylinder
 @named model = QuarterCylinder()
-@test model isa ODESystem
-
-# Smoke test for QuarterHollowSphere
-@named model = QuarterHollowSphere()
 @test model isa ODESystem
 
 # Smoke test for QuarterSphere

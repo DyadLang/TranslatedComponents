@@ -1,9 +1,0 @@
-# Leakage flux through the edges of a quarter hollow sphere
-# This component is translated by DyadAI
-component QuarterHollowSphere
-  extends Leakage
-  # Thickness of spherical shell
-  parameter t::Dyad.Length = 0.01
-relations
-  G_m = 1.25663706212e-6 * 0.25 * t
-end
