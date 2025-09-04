@@ -1,0 +1,1 @@
+type M350_50A = SoftMagneticBaseData(label = "M350-50A", mu_i = 1210, B_myMax = 1.16, c_a = 24630, c_b = 2.44, n = 14)

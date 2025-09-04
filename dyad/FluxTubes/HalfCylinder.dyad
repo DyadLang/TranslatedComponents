@@ -1,0 +1,9 @@
+# Leakage flux through the edges of a half cylinder
+# This component is translated by DyadAI
+component HalfCylinder
+  extends Leakage
+  # Axial length orthogonal to flux (=2*pi*r for cylindrical pole and r>>distance between edges)
+  parameter l::Dyad.Length = 0.1
+relations
+  G_m = 1.25663706212e-6 * 0.26 * l
+end

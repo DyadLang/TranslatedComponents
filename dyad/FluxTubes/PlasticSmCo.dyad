@@ -1,0 +1,1 @@
+type PlasticSmCo = HardMagneticBaseData(H_cBRef = 385000, B_rRef = 0.57, T_ref = 20 + 273.15, alpha_Br = -0.0004)

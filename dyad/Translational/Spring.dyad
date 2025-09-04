@@ -1,11 +1,11 @@
 # Linear 1D Translational spring
 # This component is translated by DyadAI
 component Spring
-  extends Translational.PartialCompliant
+  extends PartialCompliant
   # Spring constant
-  parameter c::Dyad.TranslationalSpringConstant(final min=0) = 1
+  parameter c::Dyad.TranslationalSpringConstant(final min = 0) = 1
   # Unstretched spring length
   parameter s_rel0::Dyad.Distance = 0
 relations
-  f = c*(s_rel-s_rel0)
+  f = c * (s_rel - s_rel0)
 end

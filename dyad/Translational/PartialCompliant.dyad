@@ -1,13 +1,13 @@
 # Compliant connection of two Translational 1D flanges
 # This component is translated by DyadAI
 partial component PartialCompliant
-  extends Translational.PartialTwoFlanges
+  extends PartialTwoFlanges
   # Relative distance (= flange_b.s - flange_a.s)
   variable s_rel::Dyad.Position
   # Force between flanges (positive in direction of flange axis R)
   variable f::Dyad.Force
 relations
-  s_rel = flange_b.s-flange_a.s
+  s_rel = flange_b.s - flange_a.s
   flange_b.f = f
   flange_a.f = -f
 end

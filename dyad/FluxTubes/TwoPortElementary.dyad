@@ -1,0 +1,4 @@
+partial component TwoPortElementary
+  port_p = MagneticPort()
+  port_n = MagneticPort()
+end

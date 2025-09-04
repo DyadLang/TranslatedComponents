@@ -1,0 +1,9 @@
+# Constant permeance
+# This component is translated by DyadAI
+component ConstantPermeance
+  extends TwoPort
+  # Magnetic permeance
+  parameter G_m::Dyad.Permeance = 1
+relations
+  G_m * V_m = Phi
+end

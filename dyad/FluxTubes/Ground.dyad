@@ -1,0 +1,7 @@
+# Zero magnetic potential
+# This component is translated by DyadAI
+component Ground
+  port = MagneticPort()
+relations
+  port.V_m = 0
+end

@@ -1,0 +1,12 @@
+# Signal-controlled magnetic flux source
+# This component is translated by DyadAI
+component SignalMagneticFlux
+  extends TwoPortElementary
+  Phi = RealInput()
+  # Magnetic potential difference between both ports
+  variable V_m::Dyad.MagneticPotentialDifference
+relations
+  V_m = port_p.V_m - port_n.V_m
+  Phi = port_p.Phi
+  0 = port_p.Phi + port_n.Phi
+end

@@ -1,0 +1,1 @@
+type PlasticHardFerrite = HardMagneticBaseData(H_cBRef = 130000, B_rRef = 0.21, T_ref = 20 + 273.15, alpha_Br = -0.002)

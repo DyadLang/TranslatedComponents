@@ -1,0 +1,10 @@
+partial component TwoPortExtended
+  extends TwoPortElementary
+  # Magnetic potential difference of ports
+  variable V_m::Dyad.MagneticPotentialDifference
+  # Magnetic flux from port_p to port_n
+  variable Phi::Dyad.MagneticFlux
+relations
+  V_m = port_p.V_m - port_n.V_m
+  Phi = port_p.Phi
+end

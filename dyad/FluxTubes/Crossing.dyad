@@ -1,0 +1,11 @@
+# Crossing of two branches
+# This component is translated by DyadAI
+component Crossing
+  port_p1 = MagneticPort()
+  port_p2 = MagneticPort()
+  port_n1 = MagneticPort()
+  port_n2 = MagneticPort()
+relations
+  connect(port_p1, port_p2)
+  connect(port_n1, port_n2)
+end

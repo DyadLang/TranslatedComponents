@@ -1,7 +1,7 @@
 # Device to measure a single relative variable between two flanges
 # This component is translated by DyadAI
 partial component PartialRelativeSensor
-  extends Translational.PartialTwoFlanges
+  extends PartialTwoFlanges
 relations
-  0 = flange_a.f+flange_b.f
+  0 = flange_a.f + flange_b.f
 end

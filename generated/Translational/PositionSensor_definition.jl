@@ -12,6 +12,7 @@ This component is translated by DyadAI
 
 ## Connectors
 
+ * `flange` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
  * `s` - This connector represents a real signal as an output from a component ([`RealOutput`](@ref))
 """
 @component function PositionSensor(; name)
@@ -28,6 +29,7 @@ This component is translated by DyadAI
 
   ### Components
   __systems = System[]
+  push!(__systems, @named flange = __Dyad__Flange())
 
   ### Guesses
   __guesses = Dict()
@@ -40,6 +42,8 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
+  push!(__eqs, 0 ~ flange.f)
+  push!(__eqs, s ~ flange.s)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)

@@ -1,0 +1,10 @@
+# Leakage reluctance with respect to the reluctance of a useful flux path (not for dynamic simulation of actuators)
+# This component is translated by DyadAI
+component LeakageWithCoefficient
+  extends Leakage
+  R_mUsefulTot = RealInput()
+  # Ratio useful flux/(leakage flux + useful flux) = useful flux/total flux
+  parameter c_usefulFlux::Dyad.CouplingCoefficient(final max = 1 - eps, final min = eps) = 0.7
+relations
+  (1 - c_usefulFlux) * R_m = c_usefulFlux * R_mUsefulTot
+end

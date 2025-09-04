@@ -1,7 +1,7 @@
 # Ideal sensor to measure the absolute velocity, force and power between two flanges
 # This component is translated by DyadAI
 component MultiSensor
-  extends Translational.PartialRelativeSensor
+  extends PartialRelativeSensor
   power = RealOutput()
   f = RealOutput()
   v = RealOutput()
@@ -9,5 +9,5 @@ relations
   flange_a.s = flange_b.s
   f = flange_a.f
   v = der(flange_a.s)
-  power = f*v
+  power = f * v
 end

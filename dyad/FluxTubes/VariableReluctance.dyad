@@ -1,0 +1,8 @@
+# Variable reluctance
+# This component is translated by DyadAI
+component VariableReluctance
+  extends TwoPort
+  R_m = RealInput()
+relations
+  V_m = Phi * R_m
+end

@@ -12,6 +12,8 @@ This component is translated by DyadAI
 
 ## Connectors
 
+ * `flange_a` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
+ * `flange_b` - This connector represents a mechanical flange with position and force as the potential and flow variables, respectively. ([`Flange`](@ref))
  * `a_rel` - This connector represents a real signal as an output from a component ([`RealOutput`](@ref))
 
 ## Variables
@@ -37,6 +39,8 @@ This component is translated by DyadAI
 
   ### Components
   __systems = System[]
+  push!(__systems, @named flange_a = __Dyad__Flange())
+  push!(__systems, @named flange_b = __Dyad__Flange())
 
   ### Guesses
   __guesses = Dict()
@@ -49,8 +53,11 @@ This component is translated by DyadAI
 
   ### Equations
   __eqs = Equation[]
+  push!(__eqs, 0 ~ flange_a.f + flange_b.f)
+  push!(__eqs, s_rel ~ flange_b.s - flange_a.s)
   push!(__eqs, v_rel ~ D(s_rel))
   push!(__eqs, a_rel ~ D(v_rel))
+  push!(__eqs, 0 ~ flange_a.f)
 
   # Return completely constructed System
   return System(__eqs, t, __vars, __params; systems=__systems, defaults=__defaults, guesses=__guesses, name, initialization_eqs=__initialization_eqs)
