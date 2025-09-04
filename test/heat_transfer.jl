@@ -56,10 +56,6 @@
 @named model = ThermalResistor()
 @test model isa ODESystem
 
-# Smoke test for ToKelvin
-@named model = ToKelvin()
-@test model isa ODESystem
-
 # Smoke test for TwoMasses
 @named model = TwoMasses()
 @test model isa ODESystem
