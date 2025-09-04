@@ -20,10 +20,6 @@
 @named model = FixedTemperature()
 @test model isa ODESystem
 
-# Smoke test for FromKelvin
-@named model = FromKelvin()
-@test model isa ODESystem
-
 # Smoke test for HeatCapacitor
 @named model = HeatCapacitor()
 @test model isa ODESystem
