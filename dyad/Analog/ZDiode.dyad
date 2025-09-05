@@ -1,0 +1,21 @@
+component ZDiode
+  extends OnePort
+  extends ConditionalHeatPort(T = 293.15)
+  # Saturation current
+  parameter Ids::Dyad.Current = 1.0e-6
+  # Voltage equivalent of temperature (kT/qn)
+  parameter Vt::Dyad.Voltage = 0.04
+  # Max. exponent for linear continuation
+  parameter Maxexp::Real(final min = Modelica.Constants.small) = 30
+  # Parallel ohmic resistance
+  parameter R::Dyad.Resistance = 100000000
+  # Breakthrough voltage = Zener- or Z-voltage
+  parameter Bv::Dyad.Voltage = 5.1
+  # Breakthrough knee current
+  parameter Ibv::Dyad.Current = 0.7
+  # Breakthrough emission coefficient
+  parameter Nbv::Real = 0.74
+relations
+  i = (v > Maxexp * Vt) ? (Ids * (exp(Maxexp) * (1 + v / Vt - Maxexp) - 1) + v / R) : ((v + Bv) < -Maxexp * (Nbv * Vt) ? (-Ids - Ibv * exp(Maxexp) * (1 - (v + Bv) / (Nbv * Vt) - Maxexp) + v / R) : (Ids * (exp(v / Vt) - 1) - Ibv * exp(-(v + Bv) / (Nbv * Vt)) + v / R))
+  LossPower = v * i
+end

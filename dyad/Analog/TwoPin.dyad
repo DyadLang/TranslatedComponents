@@ -1,0 +1,8 @@
+partial component TwoPin
+  p = Pin()
+  n = Pin()
+  # Voltage drop of the two pins (= p.v - n.v)
+  variable v::Dyad.Voltage
+relations
+  v = p.v - n.v
+end

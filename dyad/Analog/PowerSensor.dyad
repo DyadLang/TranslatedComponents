@@ -1,0 +1,18 @@
+component PowerSensor
+  pc = Pin()
+  nc = Pin()
+  pv = Pin()
+  nv = Pin()
+  power = RealOutput()
+  voltageSensor = VoltageSensor()
+  currentSensor = CurrentSensor()
+  product = BlockComponents.Product()
+relations
+  connect(pv, voltageSensor.p)
+  connect(voltageSensor.n, nv)
+  connect(pc, currentSensor.p)
+  connect(currentSensor.n, nc)
+  connect(currentSensor.i, product.u2)
+  connect(voltageSensor.v, product.u1)
+  connect(product.y, power)
+end

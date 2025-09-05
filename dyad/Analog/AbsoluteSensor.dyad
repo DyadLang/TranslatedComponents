@@ -1,0 +1,4 @@
+partial component AbsoluteSensor
+  p = Pin()
+  y = RealOutput()
+end

@@ -1,0 +1,8 @@
+component VCC
+  extends TwoPort
+  # Transconductance
+  parameter transConductance::Dyad.Conductance = 1
+relations
+  i2 = v1 * transConductance
+  i1 = 0
+end

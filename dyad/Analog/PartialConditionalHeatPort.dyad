@@ -1,0 +1,12 @@
+partial component PartialConditionalHeatPort
+  heatPort = TranslatedComponents.HeatTransfer.HeatPort() if useHeatPort
+  fixedTemperature = TranslatedComponents.HeatTransfer.FixedTemperature(T = T) if not(useHeatPort)
+  internalHeatPort = TranslatedComponents.HeatTransfer.HeatPort()
+  # =true, if HeatPort is enabled
+  structural parameter useHeatPort::Boolean = false
+  # Fixed device temperature if useHeatPort = false
+  parameter T::Dyad.Temperature = 293.15
+relations
+  connect(heatPort, internalHeatPort)
+  connect(fixedTemperature.port, internalHeatPort)
+end

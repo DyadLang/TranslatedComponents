@@ -1,0 +1,18 @@
+component ConditionalHeatPort
+  heatPort = TranslatedComponents.HeatTransfer.HeatPort() if useHeatPort
+  # = true, if heatPort is enabled
+  structural parameter useHeatPort::Boolean = false
+  # Fixed device temperature if useHeatPort = false
+  parameter T::Dyad.Temperature = 293.15
+  # Loss power leaving component via heatPort
+  variable LossPower::Dyad.Power
+  # Temperature of heatPort
+  variable T_heatPort::Dyad.Temperature
+relations
+  if !(useHeatPort)
+    T_heatPort = T
+  else
+    initial heatPort.T = T_heatPort
+    initial heatPort.Q_flow = -LossPower
+  end
+end

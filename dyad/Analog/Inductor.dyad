@@ -1,0 +1,7 @@
+component Inductor
+  extends OnePort
+  # Inductance
+  parameter L::Dyad.Inductance = 1
+relations
+  L * der(i) = v
+end

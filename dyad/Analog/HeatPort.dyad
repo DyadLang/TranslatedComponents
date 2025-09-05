@@ -1,0 +1,6 @@
+# Thermal port for 1-dim. heat transfer
+# This component is translated by DyadAI
+connector HeatPort
+  potential T::Dyad.Temperature
+  flow Q_flow::Dyad.MassFlowRate
+end

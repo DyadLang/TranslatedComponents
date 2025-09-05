@@ -1,0 +1,5 @@
+component Short
+  extends OnePort
+relations
+  v = 0
+end

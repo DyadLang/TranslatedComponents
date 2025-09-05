@@ -1,0 +1,18 @@
+partial component IdealSwitch
+  extends OnePort
+  extends ConditionalHeatPort(T = 293.15)
+  parameter unitVoltage::Dyad.Voltage = 1
+  parameter unitCurrent::Dyad.Current = 1
+  # Closed switch resistance
+  parameter Ron::Dyad.Resistance(final min = 0) = 1.0e-5
+  # Opened switch conductance
+  parameter Goff::Dyad.Conductance(final min = 0) = 1.0e-5
+  # Indicates off-state
+  variable off::Boolean
+  # Auxiliary variable
+  variable s::Real(final units = 1)
+relations
+  v = s * (off ? unitVoltage : Ron * unitCurrent)
+  i = s * (off ? Goff * unitVoltage : unitCurrent)
+  LossPower = v * i
+end

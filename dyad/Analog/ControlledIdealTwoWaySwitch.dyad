@@ -1,0 +1,26 @@
+component ControlledIdealTwoWaySwitch
+  extends ConditionalHeatPort(T = 293.15)
+  p = Pin()
+  n2 = Pin()
+  n1 = Pin()
+  control = Pin()
+  parameter unitVoltage::Dyad.Voltage = 1
+  parameter unitCurrent::Dyad.Current = 1
+  # Switch level
+  parameter level::Dyad.Voltage = 0.5
+  # Closed switch resistance
+  parameter Ron::Dyad.Resistance(final min = 0) = 1.0e-5
+  # Opened switch conductance
+  parameter Goff::Dyad.Conductance(final min = 0) = 1.0e-5
+  variable s1::Real(final units = 1)
+  # Auxiliary variables
+  variable s2::Real(final units = 1)
+relations
+  control.i = 0
+  0 = p.i + n2.i + n1.i
+  p.v - n1.v = s1 * (control.v > level ? unitVoltage : Ron * unitCurrent)
+  n1.i = -s1 * (control.v > level ? Goff * unitVoltage : unitCurrent)
+  p.v - n2.v = s2 * (control.v > level ? Ron * unitCurrent : unitVoltage)
+  n2.i = -s2 * (control.v > level ? unitCurrent : Goff * unitVoltage)
+  LossPower = p.i * p.v + n1.i * n1.v + n2.i * n2.v
+end

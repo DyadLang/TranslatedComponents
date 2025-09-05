@@ -1,0 +1,9 @@
+component IdealOpAmp3Pin
+  in_p = Pin()
+  in_n = Pin()
+  out = Pin()
+relations
+  in_p.v = in_n.v
+  in_p.i = 0
+  in_n.i = 0
+end

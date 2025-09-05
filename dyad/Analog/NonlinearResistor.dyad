@@ -1,0 +1,11 @@
+component NonlinearResistor
+  extends OnePort
+  # Conductance in inner voltage range
+  parameter Ga::Dyad.Conductance
+  # Conductance in outer voltage range
+  parameter Gb::Dyad.Conductance
+  # Inner voltage range limit
+  parameter Ve::Dyad.Voltage
+relations
+  i = (v < -Ve) ? (Gb * (v + Ve) - Ga * Ve) : ((v > Ve) ? (Gb * (v - Ve) + Ga * Ve) : (Ga * v))
+end

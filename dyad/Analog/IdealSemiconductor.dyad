@@ -1,0 +1,20 @@
+partial component IdealSemiconductor
+  extends OnePort
+  extends ConditionalHeatPort
+  parameter unitVoltage::Dyad.Voltage = 1
+  parameter unitCurrent::Dyad.Current = 1
+  # Forward state-on differential resistance (closed resistance)
+  parameter Ron::Dyad.Resistance(final min = 0) = 1.0e-5
+  # Backward state-off conductance (opened conductance)
+  parameter Goff::Dyad.Conductance(final min = 0) = 1.0e-5
+  # Forward threshold voltage
+  parameter Vknee::Dyad.Voltage(final min = 0) = 0
+  # Switching state
+  variable off::Boolean
+  # Auxiliary variable for actual position on the ideal diode characteristic
+  variable s::Real(final units = 1)
+relations
+  v = s * (off ? unitVoltage : Ron * unitCurrent) + Vknee
+  i = s * (off ? Goff * unitVoltage : unitCurrent) + Goff * Vknee
+  LossPower = v * i
+end

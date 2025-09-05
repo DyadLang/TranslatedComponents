@@ -3,13 +3,14 @@
 ### If you edit this code it is likely to get overwritten.
 ### Instead, update the Dyad source code and regenerate this file
 
+module Analog
+
+using ..TranslatedComponents
+
 include("definitions.jl")
 include("experiments.jl")
 include("types.jl")
 include("precompilation.jl")
 # submodules:
-include("Analog/module.jl")
-include("FluxTubes/module.jl")
-include("HeatTransfer/module.jl")
-include("Rotational/module.jl")
-include("Translational/module.jl")
+
+end # module Analog

@@ -1,0 +1,5 @@
+partial component RelativeSensor
+  p = Pin()
+  n = Pin()
+  y = RealOutput()
+end

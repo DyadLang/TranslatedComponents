@@ -1,0 +1,8 @@
+partial component OnePort
+  extends TwoPin
+  # Current flowing from pin p to pin n
+  variable i::Dyad.Current
+relations
+  0 = p.i + n.i
+  i = p.i
+end
