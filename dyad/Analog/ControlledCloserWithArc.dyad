@@ -1,9 +1,0 @@
-component ControlledCloserWithArc
-  extends IdealSwitchWithArc
-  control = Pin()
-  # Switch level
-  parameter level::Dyad.Voltage = 0.5
-relations
-  off = control.v < level
-  control.i = 0
-end

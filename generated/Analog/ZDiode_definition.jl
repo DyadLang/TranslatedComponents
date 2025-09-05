@@ -64,7 +64,7 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
   __systems = System[]
   push!(__systems, @named p = __Dyad__Pin())
   push!(__systems, @named n = __Dyad__Pin())
-  push!(__systems, @named heatPort = TranslatedComponents.Analog.HeatPort())
+  push!(__systems, @named heatPort = TranslatedComponents.HeatTransfer.HeatPort())
 
   ### Guesses
   __guesses = Dict()

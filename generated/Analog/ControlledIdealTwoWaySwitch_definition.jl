@@ -60,7 +60,7 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
   ### Components
   __systems = System[]
-  push!(__systems, @named heatPort = TranslatedComponents.Analog.HeatPort())
+  push!(__systems, @named heatPort = TranslatedComponents.HeatTransfer.HeatPort())
   push!(__systems, @named p = __Dyad__Pin())
   push!(__systems, @named n2 = __Dyad__Pin())
   push!(__systems, @named n1 = __Dyad__Pin())

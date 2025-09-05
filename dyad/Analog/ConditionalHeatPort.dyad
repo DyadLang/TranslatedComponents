@@ -1,5 +1,5 @@
 component ConditionalHeatPort
-  heatPort = HeatPort() if useHeatPort
+  heatPort = TranslatedComponents.HeatTransfer.HeatPort() if useHeatPort
   # = true, if heatPort is enabled
   structural parameter useHeatPort::Boolean = false
   # Fixed device temperature if useHeatPort = false

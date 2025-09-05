@@ -12,7 +12,7 @@
 | Name         | Description                         | Units  |   Default value |
 | ------------ | ----------------------------------- | ------ | --------------- |
 | `useHeatPort`         | = true, if heatPort is enabled                         | --  |   false |
-| `T`         | Fixed device temperature if useHeatPort = false                         | K  |   T_ref |
+| `T`         | Fixed device temperature if useHeatPort = false                         | K  |   293.15 |
 | `VDRM`         | Forward breakthrough voltage                         | V  |   100 |
 | `VRRM`         | Reverse breakthrough voltage                         | V  |   100 |
 | `IDRM`         | Saturation current                         | A  |   0.1 |
@@ -52,7 +52,7 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 | `vContot`         |                          | V  | 
 | `vConmain`         |                          | V  | 
 """
-@component function Thyristor(; name, useHeatPort=false, T=T_ref, VDRM=100, VRRM=100, IDRM=0.1, VTM=1.7, IH=0.006, ITM=25, VGT=0.7, IGT=0.005, TON=0.000001, TOFF=0.000015, Vt=0.04, Nbv=0.74, vRef=0.65, Von=5, Voff=1.5, Ron=(VTM - 0.7) / ITM, Roff=(VDRM ^ 2) / VTM / IH)
+@component function Thyristor(; name, useHeatPort=false, T=293.15, VDRM=100, VRRM=100, IDRM=0.1, VTM=1.7, IH=0.006, ITM=25, VGT=0.7, IGT=0.005, TON=0.000001, TOFF=0.000015, Vt=0.04, Nbv=0.74, vRef=0.65, Von=5, Voff=1.5, Ron=(VTM - 0.7) / ITM, Roff=(VDRM ^ 2) / VTM / IH)
 
   ### Symbolic Parameters
   __params = Any[]
@@ -91,7 +91,7 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
   ### Components
   __systems = System[]
-  push!(__systems, @named heatPort = TranslatedComponents.Analog.HeatPort())
+  push!(__systems, @named heatPort = TranslatedComponents.HeatTransfer.HeatPort())
   push!(__systems, @named Anode = __Dyad__Pin())
   push!(__systems, @named Cathode = __Dyad__Pin())
   push!(__systems, @named Gate = __Dyad__Pin())

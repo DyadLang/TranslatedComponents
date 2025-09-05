@@ -1,4 +1,0 @@
-analysis NonlinearResistorAnalysis
-  extends TransientAnalysis(stop = 10, abstol = 1m, reltol = 1m)
-  model = NonlinearResistorTest()
-end

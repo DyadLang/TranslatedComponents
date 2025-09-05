@@ -42,7 +42,7 @@ This component is translated by DyadAI ([`HeatPort`](@ref))
 
   ### Components
   __systems = System[]
-  push!(__systems, @named heatPort = TranslatedComponents.Analog.HeatPort())
+  push!(__systems, @named heatPort = TranslatedComponents.HeatTransfer.HeatPort())
 
   ### Guesses
   __guesses = Dict()
