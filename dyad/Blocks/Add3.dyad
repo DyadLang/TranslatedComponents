@@ -1,0 +1,14 @@
+component Add3
+	# Gain of input signal 1
+	parameter k1::Real = 1
+	# Gain of input signal 2
+	parameter k2::Real = 1
+	# Gain of input signal 3
+	parameter k3::Real = 1
+	u1 = RealInput()
+	u2 = RealInput()
+	u3 = RealInput()
+	y = RealOutput()
+relations
+	y = k1*u1 + k2*u2 + k3*u3
+end

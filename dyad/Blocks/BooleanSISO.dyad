@@ -1,0 +1,4 @@
+partial component BooleanSISO
+  u = BooleanInput()
+  y = BooleanOutput()
+end

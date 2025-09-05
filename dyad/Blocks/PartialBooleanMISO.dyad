@@ -1,0 +1,6 @@
+partial component PartialBooleanMISO
+  u = BooleanVectorInput()
+  y = BooleanOutput()
+  # Number of input connections
+  parameter nu::Integer(min = 0) = 0
+end

@@ -1,0 +1,4 @@
+partial component IntegerSIBooleanSO
+  u = IntegerInput()
+  y = BooleanOutput()
+end

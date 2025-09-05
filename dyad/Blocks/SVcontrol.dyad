@@ -1,0 +1,5 @@
+partial component SVcontrol
+	u_s = RealInput()
+	u_m = RealInput()
+	y = RealOutput()
+end

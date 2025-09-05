@@ -4,6 +4,10 @@ using Test
 
 include("../generated/tests.jl")
 
+using TranslatedComponents.Blocks
+
+include("blocks.jl")
+
 using TranslatedComponents.Analog
 
 include("analog.jl")

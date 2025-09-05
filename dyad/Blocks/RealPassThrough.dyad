@@ -1,0 +1,5 @@
+component RealPassThrough
+  extends SISO
+relations
+  y = u
+end

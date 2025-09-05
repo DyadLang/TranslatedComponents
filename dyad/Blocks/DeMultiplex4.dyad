@@ -1,0 +1,17 @@
+component DeMultiplex4
+	# Dimension of output signal connector 1
+	parameter n1::Integer = 1
+	# Dimension of output signal connector 2
+	parameter n2::Integer = 1
+	# Dimension of output signal connector 3
+	parameter n3::Integer = 1
+	# Dimension of output signal connector 4
+	parameter n4::Integer = 1
+	u = RealInput()
+	y1 = RealOutput()
+	y2 = RealOutput()
+	y3 = RealOutput()
+	y4 = RealOutput()
+relations
+	u = [y1, y2, y3, y4]
+end

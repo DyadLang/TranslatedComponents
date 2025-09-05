@@ -1,0 +1,5 @@
+component Max
+  extends SI2SO
+relations
+  y = max(u1, u2)
+end

@@ -1,0 +1,8 @@
+component DeMultiplex
+  u = RealInput()
+  y = RealVectorOutput()
+  # Dimension of output signal connector
+  parameter n::Integer(min = 0) = 0
+relations
+  y = u
+end

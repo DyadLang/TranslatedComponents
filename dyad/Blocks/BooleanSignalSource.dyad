@@ -1,0 +1,3 @@
+partial component BooleanSignalSource
+  y = BooleanOutput()
+end

@@ -1,0 +1,9 @@
+component MultiProduct
+  extends PartialRealMISO
+relations
+  if size(u, 1) > 0
+    y = prod(u)
+  else
+    y = 0
+  end
+end

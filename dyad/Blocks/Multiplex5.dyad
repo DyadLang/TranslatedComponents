@@ -1,0 +1,20 @@
+component Multiplex5
+	# Dimension of input signal connector 1
+	parameter n1::Integer = 1
+	# Dimension of input signal connector 2
+	parameter n2::Integer = 1
+	# Dimension of input signal connector 3
+	parameter n3::Integer = 1
+	# Dimension of input signal connector 4
+	parameter n4::Integer = 1
+	# Dimension of input signal connector 5
+	parameter n5::Integer = 1
+	u1 = RealInput()
+	u2 = RealInput()
+	u3 = RealInput()
+	u4 = RealInput()
+	u5 = RealInput()
+	y = RealOutput()
+relations
+	y = [u1, u2, u3, u4, u5]
+end

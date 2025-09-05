@@ -1,0 +1,5 @@
+component Division
+  extends SI2SO
+relations
+  y = u1 / u2
+end

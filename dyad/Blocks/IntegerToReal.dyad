@@ -1,0 +1,6 @@
+component IntegerToReal
+  u = IntegerInput()
+  y = RealOutput()
+relations
+  y = u
+end

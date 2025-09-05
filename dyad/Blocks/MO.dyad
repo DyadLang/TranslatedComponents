@@ -1,0 +1,5 @@
+partial component MO
+	# Number of outputs
+	parameter nout::Integer(min = 1) = 1
+	y = RealOutput()
+end

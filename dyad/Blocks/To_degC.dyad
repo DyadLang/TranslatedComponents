@@ -1,0 +1,5 @@
+component To_degC
+  extends PartialConversionBlock
+relations
+  y = TranslatedComponents.to_degC(u)
+end

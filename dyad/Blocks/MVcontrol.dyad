@@ -1,0 +1,11 @@
+partial component MVcontrol
+	# Number of setpoint inputs
+	parameter nu_s::Integer = 1
+	# Number of measurement inputs
+	parameter nu_m::Integer = 1
+	# Number of actuator outputs
+	parameter ny::Integer = 1
+	u_s = RealInput()
+	u_m = RealInput()
+	y = RealOutput()
+end

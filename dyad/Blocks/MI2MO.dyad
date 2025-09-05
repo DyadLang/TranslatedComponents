@@ -1,0 +1,7 @@
+partial component MI2MO
+	# Dimension of input and output vectors.
+	parameter n::Integer = 1
+	u1 = RealInput()
+	u2 = RealInput()
+	y = RealOutput()
+end

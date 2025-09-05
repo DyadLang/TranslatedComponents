@@ -1,0 +1,5 @@
+partial component SI2BooleanSO
+  u1 = BooleanInput()
+  u2 = BooleanInput()
+  y = BooleanOutput()
+end

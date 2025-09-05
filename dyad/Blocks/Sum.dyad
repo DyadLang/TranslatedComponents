@@ -1,0 +1,7 @@
+component Sum
+  extends MISO
+  # Optional: sum coefficients
+  parameter k::Real = ones(nin)
+relations
+  y = k * u
+end

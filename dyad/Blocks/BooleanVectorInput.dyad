@@ -1,0 +1,1 @@
+connector BooleanVectorInput = input Boolean

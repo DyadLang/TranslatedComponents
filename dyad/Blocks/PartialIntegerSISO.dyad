@@ -1,0 +1,4 @@
+partial component PartialIntegerSISO
+  u = IntegerInput()
+  y = IntegerOutput()
+end

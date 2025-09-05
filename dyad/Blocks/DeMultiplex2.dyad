@@ -1,0 +1,11 @@
+component DeMultiplex2
+	# Dimension of output signal connector 1
+	parameter n1::Integer = 1
+	# Dimension of output signal connector 2
+	parameter n2::Integer = 1
+	u = RealInput()
+	y1 = RealOutput()
+	y2 = RealOutput()
+relations
+	u = [y1, y2]
+end

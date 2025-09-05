@@ -1,0 +1,10 @@
+component MinMax
+  u = RealVectorInput()
+  yMax = RealOutput()
+  yMin = RealOutput()
+  # Number of input connections
+  parameter nu::Integer(min = 0) = 0
+relations
+  yMax = max(u)
+  yMin = min(u)
+end

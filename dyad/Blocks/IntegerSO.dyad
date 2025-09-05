@@ -1,0 +1,3 @@
+partial component IntegerSO
+  y = IntegerOutput()
+end

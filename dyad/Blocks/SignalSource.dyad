@@ -1,0 +1,7 @@
+partial component SignalSource
+  extends SO
+  # Offset of output signal y
+  parameter offset::Real = 0
+  # Output y = offset for time < startTime
+  parameter startTime::Dyad.Time = 0
+end

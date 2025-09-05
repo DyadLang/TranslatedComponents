@@ -1,0 +1,5 @@
+partial component SI2SO
+	u1 = RealInput()
+	u2 = RealInput()
+	y = RealOutput()
+end

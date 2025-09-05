@@ -1,0 +1,6 @@
+partial component MIMOs
+	# Number of inputs (= number of outputs)
+	parameter n::Integer = 1
+	u = RealInput()
+	y = RealOutput()
+end

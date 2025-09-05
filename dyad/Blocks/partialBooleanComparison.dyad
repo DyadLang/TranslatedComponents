@@ -1,0 +1,5 @@
+partial component partialBooleanComparison
+  u1 = RealInput()
+  u2 = RealInput()
+  y = BooleanOutput()
+end

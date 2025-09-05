@@ -1,0 +1,4 @@
+partial component SISO
+	u = RealInput()
+	y = RealOutput()
+end

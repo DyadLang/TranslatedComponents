@@ -1,0 +1,6 @@
+partial component SIMO
+	# Number of outputs
+	parameter nout::Integer = 1
+	u = RealInput()
+	y = RealOutput()
+end
